@@ -1,0 +1,2 @@
+# Components
+Kansio komponenteille.
