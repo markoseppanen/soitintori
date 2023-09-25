@@ -1,13 +1,13 @@
 import React from 'react';
 import {Platform, SafeAreaView, StyleSheet} from 'react-native';
-import CategoryList from '../components/CategoryList';
+import InstrumentList from '../components/InstrumentList';
 import PropTypes from 'prop-types';
 import { Text } from '@rneui/themed';
 
-export const Categories = ({navigation}) => {
+export const InstrumentsView = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
-      <CategoryList navigation={navigation} />
+      <InstrumentList navigation={navigation} />
     </SafeAreaView>
   );
 };
@@ -22,7 +22,6 @@ const styles = StyleSheet.create({
   },
 });
 
-Categories.propTypes = {
+InstrumentsView.propTypes = {
   navigation: PropTypes.object,
 };
-

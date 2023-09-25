@@ -5,7 +5,7 @@ import { ListItem as RNEListItem } from '@rneui/themed';
 const CategoryListItem = ({singleCategory, navigation}) => {
   return (<RNEListItem
     onPress={() => {
-        navigation.navigate('SingleCategory', singleCategory);
+        navigation.navigate('InstrumentsView', singleCategory);
     }}
   >
     <Image

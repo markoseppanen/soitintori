@@ -1,8 +1,8 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
-
-import { Categories } from '../views/Categories';
+import { InstrumentsView } from '../views/InstrumentsView';
+import { Categories } from '../views/categories';
 import { AddListing } from '../views/AddListing';
 import { Profile } from '../views/Profile';
 
@@ -29,11 +29,16 @@ const TabScreen = () => (
 const StackScreen = () => {
   return (
     <Stack.Navigator>
-      <Stack.Screen
-        name="Tabs"
-        component={TabScreen}
-        options={{ headerShown: false }}
-      />
+      <>
+        <Stack.Screen
+          name="Tabs"
+          component={TabScreen}
+          options={{ headerShown: false }}
+        />
+      
+        <Stack.Screen name="InstrumentsView" component={InstrumentsView} />
+      </>
+      
     </Stack.Navigator>
   );
 };
