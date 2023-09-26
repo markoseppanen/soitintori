@@ -4,19 +4,16 @@ import { ListItem as RNEListItem } from '@rneui/themed';
 
 const InstrumentListItem = ({singleInstrument, navigation}) => {
     return (<RNEListItem
+        containerStyle={{ backgroundColor: 'rgb(231,223,223)' }}
         onPress={() => {
             navigation.navigate('SingleInstrument', singleInstrument);
         }}
       >
         <Image
             source={ singleInstrument.image}
-            style={{ width: 100, height: 100, borderRadius: 10 }}
+            style={{ width: 150, height: 150, borderRadius: 10 }}
           />
-        <RNEListItem.Title>{singleInstrument.title}</RNEListItem.Title>
-        <RNEListItem.Subtitle numberOfLines={3}>
-          {singleInstrument.description}
-        </RNEListItem.Subtitle>
-        <RNEListItem.Chevron />
+        
       </RNEListItem>
       );
     };

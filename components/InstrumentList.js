@@ -1,4 +1,4 @@
-import {FlatList} from 'react-native';
+import {FlatList, StyleSheet} from 'react-native';
 import InstrumentListItem from './InstrumentListItem';
 import { Text } from '@rneui/themed';
 
@@ -51,7 +51,7 @@ const instrumentArray = [
 ];
 
 const InstrumentList = ({navigation, categoryTitle}) => {
-  // Filter instruments based on the 'category' prop
+  // Filter instruments based on the 'categoryTitle' prop
   const filteredInstruments = instrumentArray.filter(
     (item) => item.category === categoryTitle
   );
@@ -63,12 +63,18 @@ const InstrumentList = ({navigation, categoryTitle}) => {
   return (
     <FlatList
       data={filteredInstruments}
-      renderItem={({item}) => (
+      numColumns={2}
+      renderItem={({ item }) => (
         <InstrumentListItem navigation={navigation} singleInstrument={item} />
       )}
     />
   );
 };
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});
 
 export default InstrumentList;

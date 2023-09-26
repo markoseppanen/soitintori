@@ -1,7 +1,7 @@
 import {FlatList} from 'react-native';
 import CategoryListItem from './CategoryListItem';
 
-//kategorioiden array
+//temp array before better one
 const categoryArray = [
   {
     id: '0',
