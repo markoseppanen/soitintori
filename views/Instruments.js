@@ -4,7 +4,7 @@ import InstrumentList from '../components/InstrumentList';
 import PropTypes from 'prop-types';
 import { Text } from '@rneui/themed';
 
-export const InstrumentsView = ({navigation}) => {
+export const Instruments = ({navigation}) => {
   return (
     <SafeAreaView style={styles.container}>
       <InstrumentList navigation={navigation} />
@@ -22,6 +22,6 @@ const styles = StyleSheet.create({
   },
 });
 
-InstrumentsView.propTypes = {
+Instruments.propTypes = {
   navigation: PropTypes.object,
 };
