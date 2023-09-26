@@ -1,25 +1,37 @@
 import {FlatList} from 'react-native';
 import CategoryListItem from './CategoryListItem';
 
-//kategorioiden array ensin tässä 
+//kategorioiden array
 const categoryArray = [
   {
-    key: '0',
-    title: 'Kitarat',
-    description:
-      '...',
+    id: '0',
+    categoryTitle: 'Guitars',
+    image: require('../assets/guitars.png'),
   },
   {
-    key: '1',
-    title: 'Rummut',
-    description:
-      '... ',
+    id: '1',
+    categoryTitle: 'Drums',
+    image: require('../assets/drums.png'),
   },
   {
-    key: '2',
-    title: 'Muut',
-    description:
-      ' ... ',
+    id: '2',
+    categoryTitle: 'Pianos',
+    image: require('../assets/pianos.png'),
+  },
+  {
+    id: '3',
+    categoryTitle: 'Bassos',
+    image: require('../assets/bassos.png'),
+  },
+  {
+    id: '4',
+    categoryTitle: 'WindInstruments',
+    image: require('../assets/windinstruments.png'),
+  },
+  {
+    id: '5',
+    categoryTitle: 'Others',
+    image: require('../assets/guitars.png'),
   },
 ];
 

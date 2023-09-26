@@ -9,12 +9,11 @@ const CategoryListItem = ({singleCategory, navigation}) => {
     }}
   >
     <Image
-        source={require('../assets/guitars.png')}
+        source={ singleCategory.image}
         style={{ width: 100, height: 100, borderRadius: 10 }}
       />
-    <RNEListItem.Title>{singleCategory.title}</RNEListItem.Title>
+    <RNEListItem.Title>{singleCategory.categoryTitle}</RNEListItem.Title>
     <RNEListItem.Subtitle numberOfLines={3}>
-      {singleCategory.description}
     </RNEListItem.Subtitle>
     <RNEListItem.Chevron />
   </RNEListItem>

@@ -1,15 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 // import {mediaUrl} from '../utils/app-config';
-// import {formatDate} from '../utils/functions';
+import {formatDate} from '../utils/functions';
 import {Card, Icon, Text, ListItem} from '@rneui/themed';
 
 export const SingleInstrument = ({route, navigation}) => {
   console.log('route params', route.params);
   const {
-    title,
+    category,
     description,
+    price,
+    address,
+    seller_phonenumber,
+    image
   } = route.params;
+
   // Show full image and metadata
   return (
     <Card>
