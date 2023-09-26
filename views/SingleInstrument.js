@@ -20,7 +20,7 @@ export const SingleInstrument = ({route, navigation}) => {
     <Card>
       <Card.Title>soitin</Card.Title>
       <Card.Image
-        source={require('../assets/drums.png')}
+        source={ image}
         resizeMode="center"
         style={{height: 300}}
       />
