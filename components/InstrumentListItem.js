@@ -5,7 +5,7 @@ import { ListItem as RNEListItem } from '@rneui/themed';
 const InstrumentListItem = ({singleInstrument, navigation}) => {
     return (<RNEListItem
         onPress={() => {
-            // navigation.navigate('SingleInstrumentView', singleInstrument);
+            navigation.navigate('SingleInstrument', singleInstrument);
         }}
       >
         <Image

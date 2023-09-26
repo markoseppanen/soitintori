@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { Instruments } from '../views/Instruments';
+import { SingleInstrument } from '../views/SingleInstrument';
 import { Categories } from '../views/Categories';
 import { AddListing } from '../views/AddListing';
 import { Profile } from '../views/Profile';
@@ -37,6 +38,7 @@ const StackScreen = () => {
         />
       
         <Stack.Screen name="Instruments" component={Instruments} />
+        <Stack.Screen name="SingleInstrument" component={SingleInstrument} />
       </>
       
     </Stack.Navigator>
