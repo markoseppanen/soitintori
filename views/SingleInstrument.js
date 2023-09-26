@@ -15,21 +15,24 @@ export const SingleInstrument = ({route, navigation}) => {
     image
   } = route.params;
 
-  // Show full image and metadata
   return (
     <Card>
-      <Card.Title>soitin</Card.Title>
+      <Card.Title>Myydään</Card.Title>
       <Card.Image
         source={ image}
         resizeMode="center"
         style={{height: 300}}
       />
       <ListItem>
-        <Text>kuvaus</Text>
+        <Text>{description}, {price} €</Text>
       </ListItem>
       <ListItem>
-        <Icon name="person" />
-        <Text>myyjä</Text>
+        <Icon name="place" />
+        <Text>{address}</Text>
+      </ListItem>
+      <ListItem>
+        <Icon name="phone" />
+        <Text>{seller_phonenumber}</Text>
       </ListItem>
     </Card>
   );
