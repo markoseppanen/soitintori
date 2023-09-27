@@ -1,14 +1,18 @@
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
 
-import { Categories } from "../views/Categories";
-import { AddListing } from "../views/AddListing";
-import { Profile } from "../views/Profile";
 import Login from "../views/Login";
 import { Icon } from "@rneui/themed";
 import { useContext } from "react";
 import { MainContext } from "../contexts/MainContext";
+import {Instruments} from '../views/Instruments';
+import {SingleInstrument} from '../views/SingleInstrument';
+import {Categories} from '../views/Categories';
+import {AddListing} from '../views/AddListing';
+import {Profile} from '../views/Profile';
+
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -40,14 +44,17 @@ const TabScreen = () => {
   );
 };
 
+
 const StackScreen = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
         name="Tabs"
         component={TabScreen}
-        options={{ headerShown: false }}
+        options={{headerShown: false}}
       />
+      <Stack.Screen name="Instruments" component={Instruments} />
+      <Stack.Screen name="SingleInstrument" component={SingleInstrument} />
     </Stack.Navigator>
   );
 };

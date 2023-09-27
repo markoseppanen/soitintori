@@ -5,6 +5,7 @@ module.exports = {
   },
   extends: [
     'standard',
+    'eslint:recommended',
     'plugin:react/recommended',
     '@react-native-community',
     'prettier',
