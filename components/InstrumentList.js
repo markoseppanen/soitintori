@@ -1,71 +1,54 @@
 import {FlatList, StyleSheet} from 'react-native';
+import {useMedia} from '../hooks/ApiHooks';
+import {mediaUrl} from '../utils/app-config';
 import InstrumentListItem from './InstrumentListItem';
-import { Text } from '@rneui/themed';
-
-const instrumentArray = [
-  {
-    id: '0',
-    category: 'Guitars',
-    description: 'Joku kitara',
-    price: '50',
-    address: "Jokukatu 14, 02600",
-    seller_phonenumber: "+3581234567891",
-    image: require('../assets/guitars.png')
-  },
-  {
-    id: '1',
-    category: 'Guitars',
-    description: 'Joku toinen kitara',
-    price: '130',
-    address: "Toinenkatu 3, 03130",
-    seller_phonenumber: "+3581234567892",
-    image: require('../assets/guitars.png')
-  },
-  {
-    id: '2',
-    category: 'Drums',
-    description: 'Myydään rummut',
-    price: '100',
-    address: "Toinenkatu 3, 03130",
-    seller_phonenumber: "+3581234567892",
-    image: require('../assets/drums.png')
-  },
-  {
-    id: '3',
-    category: 'WindInstruments',
-    description: 'Joku trumpetti',
-    price: '40',
-    address: "Jokukatu 14, 02600",
-    seller_phonenumber: "+3581234567891",
-    image: require('../assets/windinstruments.png')
-  },
-  {
-    id: '4',
-    category: 'Pianos',
-    description: 'Piano myynnissä',
-    price: '90',
-    address: "Jokukatu 14, 02600",
-    seller_phonenumber: "+3581234567891",
-    image: require('../assets/pianos.png')
-  },
-];
+import PropTypes from 'prop-types';
+import {Text} from '@rneui/themed';
+import {useContext} from 'react';
+import {MainContext} from '../contexts/MainContext';
 
 const InstrumentList = ({navigation, categoryTitle}) => {
-  // Filter instruments based on the 'categoryTitle' prop
-  const filteredInstruments = instrumentArray.filter(
-    (item) => item.category === categoryTitle
-  );
+  const {update} = useContext(MainContext);
+  const {mediaArray} = useMedia(update);
+  console.log(mediaArray);
 
-  if (filteredInstruments.length === 0) {
+  // mediaArray -> instrumentArray, kenoviivojen poisto description kentästä ja lopuksi filtteröinti kategorian mukaan
+  const instrumentArray = mediaArray
+    .map((item) => {
+      try {
+        // Kenoviivojen parsiminen
+        const description = JSON.parse(item.description);
+        return {
+          ...item,
+          description, // Siistitty description
+        };
+      } catch (error) {
+        // Parsing errors
+        //console.error('Parsing error:', error);
+        return item;
+      }
+    })
+    .filter((item) => item.description.category === categoryTitle);
+
+  // Jos katekoriassa ei ole yhtään instrumenttia
+  if (instrumentArray.length === 0) {
     return <Text>Nothing to show yet</Text>;
   }
 
   return (
     <FlatList
-      data={filteredInstruments}
+      data={instrumentArray}
       numColumns={2}
-      renderItem={({ item }) => (
-        <InstrumentListItem navigation={navigation} singleInstrument={item} />
+      renderItem={({item}) => (
+        <InstrumentListItem
+          navigation={navigation}
+          category={item.description.category}
+          description={item.description.description}
+          price={item.description.price}
+          address={item.description.address}
+          seller_phonenumber={item.description.seller_phonenumber}
+          image={{uri: mediaUrl + item.thumbnails.w160}}
+        />
       )}
     />
   );
@@ -76,5 +59,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+InstrumentList.propTypes = {
+  navigation: PropTypes.object,
+};
 
 export default InstrumentList;

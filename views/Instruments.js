@@ -5,10 +5,7 @@ import PropTypes from 'prop-types';
 
 export const Instruments = ({route, navigation}) => {
   console.log('route params', route.params);
-  const {
-    id,
-    categoryTitle,
-  } = route.params;
+  const {categoryTitle} = route.params;
   return (
     <SafeAreaView style={styles.container}>
       <InstrumentList navigation={navigation} categoryTitle={categoryTitle} />

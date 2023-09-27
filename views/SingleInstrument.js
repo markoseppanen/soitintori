@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import {mediaUrl} from '../utils/app-config'; will be added later
-// import {formatDate} from '../utils/functions'; maybe used later
+// import {mediaUrl} from '../utils/app-config';
+// import {formatDate} from '../utils/functions';
 import {Card, Icon, Text, ListItem, Button} from '@rneui/themed';
 import {View, StyleSheet} from 'react-native';
 
 export const SingleInstrument = ({route, navigation}) => {
   console.log('route params', route.params);
-  const {category, description, price, address, seller_phonenumber, image} =
-    route.params;
+  const {description, price, address, seller_phonenumber, image} = route.params;
+
   const goBack = () => {
-    navigation.goBack(); // This navigates back to the previous screen
+    navigation.goBack();
   };
   return (
     <View style={styles.container}>
@@ -45,12 +45,9 @@ export const SingleInstrument = ({route, navigation}) => {
           <Button
             title="Go Back"
             onPress={goBack}
-            containerStyle={{ marginTop: 20 }}
+            containerStyle={{marginTop: 20}}
           />
-          <Button
-            title="Buy"
-            containerStyle={{ marginTop: 20 }}
-          />
+          <Button title="Buy" containerStyle={{marginTop: 20}} />
         </View>
       </Card>
     </View>
