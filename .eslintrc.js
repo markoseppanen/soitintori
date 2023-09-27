@@ -4,6 +4,7 @@ module.exports = {
     es2021: true,
   },
   extends: [
+    'standard',
     'eslint:recommended',
     'plugin:react/recommended',
     '@react-native-community',
