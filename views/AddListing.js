@@ -1,10 +1,30 @@
 import { View } from 'react-native';
-import { Text } from '@rneui/themed';
+import { Icon, Input } from '@rneui/themed';
+import { CategoryPicker } from '../components/CategoryPicker';
 
 export const AddListing = () => {
   return (
     <View>
-      <Text>Add Listing</Text>
+      <CategoryPicker />
+      <Input
+        errorMessage="Description required."
+        label="Description"
+        leftIcon={
+          <Icon
+            name="description"
+            size={20}
+          />
+        }
+        leftIconContainerStyle={{}}
+        rightIcon={
+          <Icon
+            name="close"
+            size={20}
+          />
+        }
+        rightIconContainerStyle={{}}
+        placeholder="Describe your instrument"
+      />
     </View>
   );
 };

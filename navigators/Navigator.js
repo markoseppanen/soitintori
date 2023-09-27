@@ -1,6 +1,7 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { NavigationContainer } from '@react-navigation/native';
+import { Icon } from '@rneui/themed';
 
 import { Categories } from '../views/Categories';
 import { AddListing } from '../views/AddListing';
@@ -14,14 +15,38 @@ const TabScreen = () => (
     <Tab.Screen
       name="Categories"
       component={Categories}
+      options={{
+        tabBarIcon: ({ color }) => (
+          <Icon
+            name="home"
+            color={color}
+          />
+        ),
+      }}
     />
     <Tab.Screen
       name="Add Listing"
       component={AddListing}
+      options={{
+        tabBarIcon: ({ color }) => (
+          <Icon
+            name="add"
+            color={color}
+          />
+        ),
+      }}
     />
     <Tab.Screen
       name="Profile"
       component={Profile}
+      options={{
+        tabBarIcon: ({ color }) => (
+          <Icon
+            name="account-box"
+            color={color}
+          />
+        ),
+      }}
     />
   </Tab.Navigator>
 );
