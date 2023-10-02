@@ -75,7 +75,7 @@ const useMedia = (update, myFilesOnly) => {
           'Content-Type': 'application/json',
           'x-access-token': token,
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({description: JSON.stringify(data)}), // modified!!
       };
       const putResult = await doFetch(apiUrl + 'media/' + fileId, options);
       return putResult;

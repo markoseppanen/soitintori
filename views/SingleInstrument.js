@@ -21,6 +21,11 @@ export const SingleInstrument = ({route, navigation, singleInstrument}) => {
     navigation.goBack();
   };
 
+  const modifyFile = async () => {
+    console.log('modifying file', fileId);
+    navigation.navigate('Modify Listing', route);
+  };
+
   return (
     <SafeAreaView style={styles.singleInstrumentContainer}>
       <View style={styles.singleInstrumentContainer}>
@@ -77,7 +82,7 @@ export const SingleInstrument = ({route, navigation, singleInstrument}) => {
             />
             {isLoggedIn && user.user_id === user_id ? (
               <Button
-                // onPress={modifyFile}
+                onPress={modifyFile}
                 title="Modify"
                 titleStyle={{color: 'white'}}
                 buttonStyle={{backgroundColor: 'black', borderRadius: 20}}

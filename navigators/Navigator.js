@@ -8,9 +8,10 @@ import {MainContext} from '../contexts/MainContext';
 import {Instruments} from '../views/Instruments';
 import {SingleInstrument} from '../views/SingleInstrument';
 import {Categories} from '../views/Categories';
-import {AddListing} from '../views/AddListing';
+// import {AddListing} from '../views/AddListing';
 import {Profile} from '../views/Profile';
-// import Upload from '../views/Upload';
+import Upload from '../views/Upload';
+import ModifyListing from '../views/ModifyListing';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -47,7 +48,7 @@ const TabScreen = () => {
         <>
           <Tab.Screen
             name="Add Listing"
-            component={AddListing}
+            component={Upload}
             options={{
               tabBarIcon: ({color}) => <Icon name="add" color={color} />,
             }}
@@ -103,6 +104,18 @@ const StackScreen = () => {
           },
         }}
       />
+      <Stack.Screen
+        name="Modify Listing"
+        component={ModifyListing}
+        options={{
+          title: 'Modify',
+          headerBackTitle: 'Back',
+          headerStyle: {
+            backgroundColor: 'rgb(231,223,223)',
+          },
+        }}
+      />
+
     </Stack.Navigator>
   );
 };
