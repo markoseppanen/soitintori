@@ -1,80 +1,67 @@
 import {FlatList, StyleSheet} from 'react-native';
+import {useMedia} from '../hooks/ApiHooks';
 import InstrumentListItem from './InstrumentListItem';
-import { Text } from '@rneui/themed';
-
-const instrumentArray = [
-  {
-    id: '0',
-    category: 'Guitars',
-    description: 'Joku kitara',
-    price: '50',
-    address: "Jokukatu 14, 02600",
-    seller_phonenumber: "+3581234567891",
-    image: require('../assets/guitars.png')
-  },
-  {
-    id: '1',
-    category: 'Guitars',
-    description: 'Joku toinen kitara',
-    price: '130',
-    address: "Toinenkatu 3, 03130",
-    seller_phonenumber: "+3581234567892",
-    image: require('../assets/guitars.png')
-  },
-  {
-    id: '2',
-    category: 'Drums',
-    description: 'Myydään rummut',
-    price: '100',
-    address: "Toinenkatu 3, 03130",
-    seller_phonenumber: "+3581234567892",
-    image: require('../assets/drums.png')
-  },
-  {
-    id: '3',
-    category: 'WindInstruments',
-    description: 'Joku trumpetti',
-    price: '40',
-    address: "Jokukatu 14, 02600",
-    seller_phonenumber: "+3581234567891",
-    image: require('../assets/windinstruments.png')
-  },
-  {
-    id: '4',
-    category: 'Pianos',
-    description: 'Piano myynnissä',
-    price: '90',
-    address: "Jokukatu 14, 02600",
-    seller_phonenumber: "+3581234567891",
-    image: require('../assets/pianos.png')
-  },
-];
+import PropTypes from 'prop-types';
+import {Text} from '@rneui/themed';
+import {useContext, useEffect} from 'react';
+import {MainContext} from '../contexts/MainContext';
 
 const InstrumentList = ({navigation, categoryTitle}) => {
-  // Filter instruments based on the 'categoryTitle' prop
-  const filteredInstruments = instrumentArray.filter(
-    (item) => item.category === categoryTitle
-  );
+  const {update} = useContext(MainContext);
+  const {mediaArray} = useMedia(update);
 
-  if (filteredInstruments.length === 0) {
+  useEffect(() => {
+    console.log('checking the categoryTitle', categoryTitle);
+  }, [categoryTitle]);
+
+  // console.log('checking the categoryTitle', categoryTitle);
+  // console.log('mediaArray', mediaArray);
+
+  // mediaArray -> instrumentArray
+  const instrumentArray = mediaArray
+    .map((item) => {
+      try {
+        // remove backslashes
+        const description = JSON.parse(item.description.replace(/\\/g, ''));
+        // console.log('Cleaned description:', item);
+        return {
+          ...item,
+          description,
+        };
+      } catch (error) {
+        // Checking errors
+        // console.error('Parsing error:', error);
+        return item;
+      }
+    })
+    .filter(
+      (item) =>
+        item.description &&
+        item.description.category !== undefined &&
+        item.description.category === categoryTitle,
+    );
+
+  // console.log(instrumentArray);
+
+  // Jos ei ole yhtään instrumenttia
+  if (instrumentArray.length === 0) {
     return <Text>Nothing to show yet</Text>;
   }
 
   return (
     <FlatList
-      data={filteredInstruments}
+      data={instrumentArray}
       numColumns={2}
-      renderItem={({ item }) => (
+      renderItem={({item}) => (
         <InstrumentListItem navigation={navigation} singleInstrument={item} />
       )}
     />
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
+InstrumentList.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  categoryTitle: PropTypes.string.isRequired,
+};
 
 export default InstrumentList;

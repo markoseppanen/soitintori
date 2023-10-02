@@ -1,47 +1,38 @@
 import {FlatList} from 'react-native';
 import CategoryListItem from './CategoryListItem';
+import PropTypes from 'prop-types';
+import {Text} from '@rneui/themed';
 
-//temp array before better one
-const categoryArray = [
-  {
-    id: '0',
-    categoryTitle: 'Guitars',
-    image: require('../assets/guitars.png'),
-  },
-  {
-    id: '1',
-    categoryTitle: 'Drums',
-    image: require('../assets/drums.png'),
-  },
-  {
-    id: '2',
-    categoryTitle: 'Pianos',
-    image: require('../assets/pianos.png'),
-  },
-  {
-    id: '3',
-    categoryTitle: 'Bassos',
-    image: require('../assets/bassos.png'),
-  },
-  {
-    id: '4',
-    categoryTitle: 'WindInstruments',
-    image: require('../assets/windinstruments.png'),
-  },
-  {
-    id: '5',
-    categoryTitle: 'Others',
-    image: require('../assets/guitars.png'),
-  },
-];
+const CategoryList = ({navigation, categoryArray}) => {
+  // console.log(categoryArray);
 
-const CategoryList = ({navigation}) => {
+  if (!categoryArray || categoryArray.length === 0) {
+    return <Text>Nothing to show yet</Text>;
+  }
+
+  const sortedCategoryArray = categoryArray.sort(
+    (a, b) => a.categoryId - b.categoryId,
+  );
+
   return (
     <FlatList
-      data={categoryArray}
-      renderItem={({item}) => <CategoryListItem navigation={navigation} singleCategory={item} />}
+      data={sortedCategoryArray}
+      renderItem={({item}) => (
+        <CategoryListItem
+          navigation={navigation}
+          categoryId={item.categoryId}
+          categoryTitle={item.categoryTitle}
+          kategoria={item.kategoria}
+          categoryImage={item.categoryImage}
+        />
+      )}
     />
   );
+};
+
+CategoryList.propTypes = {
+  navigation: PropTypes.object,
+  categoryArray: PropTypes.array,
 };
 
 export default CategoryList;
