@@ -110,7 +110,7 @@ const useUser = () => {
 
   const postUser = async (userData) => {
     const options = {
-      method: 'POSt',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },

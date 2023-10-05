@@ -1,17 +1,13 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {
-  KeyboardAvoidingView,
-  Platform,
-  TouchableOpacity,
-  Keyboard,
-} from 'react-native';
+import {TouchableOpacity, Keyboard, ScrollView} from 'react-native';
 import PropTypes from 'prop-types';
 import {MainContext} from '../contexts/MainContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useUser} from '../hooks/ApiHooks';
-import LoginForm from '../components/LoginForm';
-import RegisterForm from '../components/RegisterForm';
+import LoginForm from '../forms/LoginForm';
+import RegisterForm from '../forms/RegisterForm';
 import {Button} from '@rneui/base';
+import {Card} from '@rneui/themed';
 
 const Login = ({navigation}) => {
   const {setIsLoggedIn, setUser} = useContext(MainContext);
@@ -21,7 +17,7 @@ const Login = ({navigation}) => {
   const checkToken = async () => {
     try {
       const token = await AsyncStorage.getItem('userToken');
-      console.log('token', token);
+      //console.log('token', token);
       const userData = await getUserByToken(token);
       if (userData) {
         setIsLoggedIn(true);
@@ -37,28 +33,36 @@ const Login = ({navigation}) => {
   }, []);
 
   return (
-    <TouchableOpacity
-      onPress={() => Keyboard.dismiss()}
-      style={{flex: 1}}
-      activeOpacity={1}
-    >
-      <KeyboardAvoidingView
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+    <ScrollView>
+      <TouchableOpacity
+        onPress={() => Keyboard.dismiss()}
+        style={{flex: 1}}
+        activeOpacity={1}
       >
         {toggleRegister ? (
           <RegisterForm setToggleRegister={setToggleRegister} />
         ) : (
           <LoginForm />
         )}
-        <Button
-          onPress={() => {
-            setToggleRegister(!toggleRegister);
-          }}
-        >
-          {toggleRegister ? 'Login' : 'Register'}
-        </Button>
-      </KeyboardAvoidingView>
-    </TouchableOpacity>
+        <Card>
+          {toggleRegister ? (
+            <Card.Title setToggleRegister={setToggleRegister}>
+              Already Registered? Login Here
+            </Card.Title>
+          ) : (
+            <Card.Title>Register Here!</Card.Title>
+          )}
+
+          <Button
+            onPress={() => {
+              setToggleRegister(!toggleRegister);
+            }}
+          >
+            {toggleRegister ? 'Login' : 'Register'}
+          </Button>
+        </Card>
+      </TouchableOpacity>
+    </ScrollView>
   );
 };
 
