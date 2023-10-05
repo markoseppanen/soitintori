@@ -1,11 +1,14 @@
-import { Alert, View } from "react-native";
-import { Button, Text } from "@rneui/themed";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { useContext } from "react";
-import { MainContext } from "../contexts/MainContext";
+import {Alert, ScrollView, View} from 'react-native';
+import {Button, Card, Icon, ListItem, Text} from '@rneui/themed';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useContext, useState} from 'react';
+import {MainContext} from '../contexts/MainContext';
+import {useTag} from '../hooks/ApiHooks';
+import ProfileForm from '../forms/ProfileForm';
 
-export const Profile = ({ navigation }) => {
-  const { setIsLoggedIn } = useContext(MainContext);
+export const Profile = ({navigation}) => {
+  const {setIsLoggedIn, user} = useContext(MainContext);
+  const {getFilesByTag} = useTag();
 
   const logOut = async () => {
     Alert.alert('Log Out', 'Are you sure you want to logout?', [
@@ -30,9 +33,40 @@ export const Profile = ({ navigation }) => {
   };
 
   return (
-    <View>
-      <Text>Profile</Text>
-      <Button size="sm" onPress={logOut}>Log Out</Button>
-    </View>
+    <ScrollView>
+      <Card>
+        <Card.Title>Profile</Card.Title>
+        {user.full_name && (
+          <ListItem>
+            <Icon name="person" />
+            <ListItem.Title>{user.full_name}</ListItem.Title>
+          </ListItem>
+        )}
+        <ListItem>
+          <Icon name="email" />
+          <ListItem.Title>{user.email}</ListItem.Title>
+        </ListItem>
+        <ListItem>
+          <Icon name="" />
+          <ListItem.Title>{user.phonenumber}</ListItem.Title>
+        </ListItem>
+        <ListItem>
+          <Icon name="" />
+          <ListItem.Title>{user.address}</ListItem.Title>
+        </ListItem>
+        <ListItem>
+          <Icon name="" />
+          <ListItem.Title>{user.postal_code}</ListItem.Title>
+        </ListItem>
+        <Card.Divider />
+        <Button size="sm" onPress={logOut}>
+          Log out!
+          <Icon name="logout"></Icon>
+        </Button>
+      </Card>
+      <Card>
+        <ProfileForm user={user} />
+      </Card>
+    </ScrollView>
   );
 };
