@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Platform, SafeAreaView, StyleSheet} from 'react-native';
 import CategoryList from '../components/CategoryList';
 import PropTypes from 'prop-types';
-import { Text } from '@rneui/themed';
+import {Text} from '@rneui/themed';
 
 export const Categories = ({navigation}) => {
   return (
@@ -24,19 +24,19 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   pageTitleContainer: {
-    backgroundColor: 'rgb(231,223,223)', 
+    backgroundColor: 'rgb(231,223,223)',
     padding: 10,
     borderRadius: 10,
-    alignSelf: 'flex-start'
+    alignSelf: 'flex-start',
   },
   pageTitle: {
     fontSize: 24,
     fontWeight: 'bold',
     color: 'black',
     alignSelf: 'flex-start',
-    // shadow 
-    textShadowColor: 'rgba(255, 255, 255, 0.9)', 
-    textShadowOffset: { width: 3, height: 3 }, 
+    // shadow
+    textShadowColor: 'rgba(255, 255, 255, 0.9)',
+    textShadowOffset: {width: 3, height: 3},
     textShadowRadius: 3,
   },
 });
@@ -44,4 +44,3 @@ const styles = StyleSheet.create({
 Categories.propTypes = {
   navigation: PropTypes.object,
 };
-
