@@ -40,7 +40,7 @@ const RegisterForm = ({setToggleRegister}) => {
       }),
     };
     try {
-      delete registerData.confirm_password;
+      delete oikeaData.confirm_password;
       const registerResponse = await postUser(oikeaData);
       Alert.alert('Registering was successful', registerResponse.message);
       setToggleRegister(false);

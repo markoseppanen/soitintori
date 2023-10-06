@@ -3,13 +3,15 @@ import {Button, Card, Icon, ListItem, Text} from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useContext, useState} from 'react';
 import {MainContext} from '../contexts/MainContext';
-import {useTag} from '../hooks/ApiHooks';
 import ProfileForm from '../forms/ProfileForm';
+import {PropTypes} from 'prop-types';
 
 export const Profile = ({navigation}) => {
   const {setIsLoggedIn, user} = useContext(MainContext);
-  const {getFilesByTag} = useTag();
 
+  const fullName = JSON.parse(user.full_name);
+
+  //console.log('user',user)
   const logOut = async () => {
     Alert.alert('Log Out', 'Are you sure you want to logout?', [
       {
@@ -36,27 +38,27 @@ export const Profile = ({navigation}) => {
     <ScrollView>
       <Card>
         <Card.Title>Profile</Card.Title>
-        {user.full_name && (
-          <ListItem>
-            <Icon name="person" />
-            <ListItem.Title>{user.full_name}</ListItem.Title>
-          </ListItem>
-        )}
+
+        <ListItem>
+          <Icon name="person" />
+          <ListItem.Title>{fullName.full_name}</ListItem.Title>
+        </ListItem>
+        <ListItem>
+          <Icon name="phone" />
+          <ListItem.Title>{fullName.phonenumber}</ListItem.Title>
+        </ListItem>
+        <ListItem>
+          <Icon name="home" />
+          <ListItem.Title>{fullName.address}</ListItem.Title>
+        </ListItem>
+        <ListItem>
+          <Icon name="apartment" />
+          <ListItem.Title>{fullName.postal_code}</ListItem.Title>
+        </ListItem>
+
         <ListItem>
           <Icon name="email" />
           <ListItem.Title>{user.email}</ListItem.Title>
-        </ListItem>
-        <ListItem>
-          <Icon name="" />
-          <ListItem.Title>{user.phonenumber}</ListItem.Title>
-        </ListItem>
-        <ListItem>
-          <Icon name="" />
-          <ListItem.Title>{user.address}</ListItem.Title>
-        </ListItem>
-        <ListItem>
-          <Icon name="" />
-          <ListItem.Title>{user.postal_code}</ListItem.Title>
         </ListItem>
         <Card.Divider />
         <Button size="sm" onPress={logOut}>
@@ -65,8 +67,17 @@ export const Profile = ({navigation}) => {
         </Button>
       </Card>
       <Card>
+        <Button size="sm" onPress={logOut}>
+          History
+          <Icon name="history"></Icon>
+        </Button>
+      </Card>
+      <Card>
         <ProfileForm user={user} />
       </Card>
     </ScrollView>
   );
+};
+Profile.propTypes = {
+  user: PropTypes.object,
 };
