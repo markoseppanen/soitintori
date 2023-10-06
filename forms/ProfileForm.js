@@ -10,7 +10,7 @@ import {MainContext} from '../contexts/MainContext';
 const ProfileForm = ({user}) => {
   const {putUser, checkUsername, getUserByToken} = useUser();
   const {setUser} = useContext(MainContext);
-  console.log('ProfileForm', user);
+  //console.log('ProfileForm', user);
   const {
     control,
     handleSubmit,
@@ -22,6 +22,8 @@ const ProfileForm = ({user}) => {
       username: '',
       password: '',
       confirm_password: '',
+      full_name: '',
+      email: '',
       address: '',
       phonenumber: '',
       postal_code: '',
@@ -32,26 +34,26 @@ const ProfileForm = ({user}) => {
   const update = async (updateData) => {
     console.log('Updating: ', updateData);
     const updatedData = {
-      username: registerData.username,
-      password: registerData.password,
-      email: registerData.email,
+      username: updateData.username,
+      password: updateData.password,
+      email: updateData.email,
       full_name: JSON.stringify({
-        full_name: registerData.full_name,
-        address: registerData.address,
-        phonenumber: registerData.phonenumber,
-        postal_code: registerData.postal_code,
+        full_name: updateData.full_name,
+        address: updateData.address,
+        phonenumber: updateData.phonenumber,
+        postal_code: updateData.postal_code,
       }),
     };
     try {
-      delete updateData.confirm_password;
+      delete updatedData.confirm_password;
       for (const [i, value] of Object.entries(updatedData)) {
         console.log(i, value);
         if (value === '') {
-          delete updateData[i];
+          delete updatedData[i];
         }
       }
       const token = await AsyncStorage.getItem('userToken');
-      const updateResult = await putUser(updateData, token);
+      const updateResult = await putUser(updatedData, token);
       console.log('registeration result', updateResult);
       Alert.alert('Success', updateResult.message);
       const userData = await getUserByToken(token);
