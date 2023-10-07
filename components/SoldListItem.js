@@ -4,8 +4,8 @@ import {Text, Avatar, ListItem as RNEListItem} from '@rneui/themed';
 import {formatDateFromISO} from '../utils/functions';
 
 const SoldListItem = ({singleSoldItem, salesData}) => {
-  console.log('salesData', salesData);
-  console.log('singleSoldItem', singleSoldItem);
+  // console.log('salesData', salesData);
+  // console.log('singleSoldItem', singleSoldItem);
 
   // ReceiptData is available?
   if (!salesData) {
@@ -15,7 +15,7 @@ const SoldListItem = ({singleSoldItem, salesData}) => {
 
   const commentData = JSON.parse(salesData.comment);
   const buyer_name = commentData.buyer_name;
-  console.log('buyer_name', buyer_name);
+  // console.log('buyer_name', buyer_name);
 
   return (
     <RNEListItem

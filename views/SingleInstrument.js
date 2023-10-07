@@ -11,10 +11,8 @@ import ImageModal from './ImageModal';
 
 export const SingleInstrument = ({route, navigation}) => {
   const {user, isLoggedIn} = useContext(MainContext);
-  const {postComment} = useComment();
-  // console.log('USER information: ', user);
-  const buyerData = JSON.parse(user.full_name);
-  // console.log(user.full_name);
+  const {commentsArray, postComment} = useComment();
+  // console.log('USER information: ', user); // user data is null if not logged in
   // console.log('route params: ', route.params);
   const [isModalVisible, setModalVisible] = useState(false);
   const toggleModal = () => {
@@ -38,13 +36,14 @@ export const SingleInstrument = ({route, navigation}) => {
   };
 
   const dataIntoBuyerJSON = (user) => {
+    const fullName = JSON.parse(user.full_name);
     const commentData = {
       isSold: true,
       buyer_email: user.email || '',
-      buyer_name: buyerData.full_name || user.username,
-      buyer_phonenumber: buyerData.phonenumber || '',
-      buyer_address: buyerData.address || '',
-      buyer_postalcode: buyerData.postal_code || '',
+      buyer_name: fullName.full_name || user.username,
+      buyer_phonenumber: fullName.phonenumber || '',
+      buyer_address: fullName.address || '',
+      buyer_postalcode: fullName.postal_code || '',
     };
 
     const buyerJSON = {
@@ -104,7 +103,7 @@ export const SingleInstrument = ({route, navigation}) => {
 
             <ImageModal
               visible={isModalVisible}
-              imageUrl={mediaUrl + thumbnails.w640}
+              imageUrl={mediaUrl + filename}
               onClose={toggleModal}
             />
           </View>

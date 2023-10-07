@@ -55,7 +55,7 @@ const MyCurrentList = ({navigation}) => {
 
     return !hasSoldComment;
   });
-  console.log('own items', filteredInstrumentArray);
+  // console.log('own items', filteredInstrumentArray);
 
   if (filteredInstrumentArray.length === 0) {
     return <Text>Nothing to show yet</Text>;
