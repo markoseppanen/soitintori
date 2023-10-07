@@ -1,7 +1,7 @@
-import {Alert, ScrollView, View} from 'react-native';
-import {Button, Card, Icon, ListItem, Text} from '@rneui/themed';
+import {Alert, ScrollView} from 'react-native';
+import {Button, Card, Icon, ListItem} from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useContext, useState} from 'react';
+import {useContext} from 'react';
 import {MainContext} from '../contexts/MainContext';
 import ProfileForm from '../forms/ProfileForm';
 import {PropTypes} from 'prop-types';
@@ -11,7 +11,7 @@ export const Profile = ({navigation}) => {
 
   const fullName = JSON.parse(user.full_name);
 
-  //console.log('user',user)
+  // console.log('user',user)
   const logOut = async () => {
     Alert.alert('Log Out', 'Are you sure you want to logout?', [
       {
@@ -38,7 +38,6 @@ export const Profile = ({navigation}) => {
     <ScrollView>
       <Card>
         <Card.Title>Profile</Card.Title>
-
         <ListItem>
           <Icon name="person" />
           <ListItem.Title>{fullName.full_name}</ListItem.Title>
