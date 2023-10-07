@@ -11,6 +11,9 @@ import {Categories} from '../views/Categories';
 // import {AddListing} from '../views/AddListing';
 import {Profile} from '../views/Profile';
 import Upload from '../views/Upload';
+import EditListing from '../views/EditListing';
+import {History} from '../views/History';
+import {MyListing} from '../views/MyListing';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -103,6 +106,17 @@ const StackScreen = () => {
           },
         }}
       />
+      <Stack.Screen
+        name="Edit Listing"
+        component={EditListing}
+        options={{
+          title: 'Edit announcement',
+          headerBackTitle: 'Back',
+          headerStyle: {
+            backgroundColor: 'rgb(231,223,223)',
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -114,6 +128,28 @@ const StackScreen2 = () => {
         name="Profile"
         component={Profile}
         options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Personal History"
+        component={History}
+        options={{
+          title: '',
+          headerBackTitle: 'Back',
+          headerStyle: {
+            backgroundColor: 'rgb(231,223,223)',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Current Listing"
+        component={MyListing}
+        options={{
+          title: '',
+          headerBackTitle: 'Back',
+          headerStyle: {
+            backgroundColor: 'rgb(231,223,223)',
+          },
+        }}
       />
     </Stack.Navigator>
   );

@@ -1,24 +1,25 @@
 import {Card, Input, Button} from '@rneui/themed';
 import {Controller, useForm} from 'react-hook-form';
-import {Alert, ScrollView} from 'react-native';
-import {Picker} from '@react-native-picker/picker';
-import * as ImagePicker from 'expo-image-picker';
-import {useContext, useState} from 'react';
-import {appId, placeholderImage} from '../utils/app-config';
+import {useContext} from 'react';
+import {mediaUrl} from '../utils/app-config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useMedia, useTag} from '../hooks/ApiHooks';
+import {useMedia} from '../hooks/ApiHooks';
 import PropTypes from 'prop-types';
 import {MainContext} from '../contexts/MainContext';
 import styles from '../styles/Styles';
+import {ScrollView, Alert} from 'react-native';
+import {Picker} from '@react-native-picker/picker';
 import {fetchCategoryArray} from '../utils/functions';
 
-const Upload = ({navigation}) => {
+const EditListing = ({navigation, route}) => {
+  // console.log('route params in EditListing', route.params);
+  const {
+    params: {file_id: fileId, ...instrumentParams},
+    filename,
+  } = route.params;
   const {update, setUpdate} = useContext(MainContext);
-  const [image, setImage] = useState(placeholderImage);
-  const [type, setType] = useState('image');
-  const {postMedia, loading} = useMedia();
+  const {putMedia} = useMedia();
   const {mediaArray} = useMedia(update);
-  const {postTag} = useTag();
   const {
     control,
     reset,
@@ -26,91 +27,46 @@ const Upload = ({navigation}) => {
     formState: {errors},
   } = useForm({
     defaultValues: {
-      category: '',
-      title: '',
-      description: '',
-      price: '',
-      address: '',
-      seller_phonenumber: '',
+      category: instrumentParams.description.category,
+      title: instrumentParams.title,
+      description: instrumentParams.description.description,
+      price: isNaN(parseFloat(instrumentParams.description.price))
+        ? 0
+        : parseFloat(instrumentParams.description.price),
+      address: instrumentParams.description.address,
+      seller_phonenumber: instrumentParams.description.seller_phonenumber,
     },
     mode: 'onBlur',
   });
 
   const sortedCategoryArray = fetchCategoryArray(mediaArray);
 
-  console.log('', sortedCategoryArray);
-
-  const compileDataIntoJSON = (uploadData) => {
-    const descriptionJSON = {
-      category: uploadData.category,
-      description: uploadData.description,
-      price: parseFloat(uploadData.price),
-      address: uploadData.address,
-      seller_phonenumber: uploadData.seller_phonenumber,
+  const dataForUpdate = (updateData) => {
+    const updateJSON = {
+      title: updateData.title,
+      description: JSON.stringify({
+        category: updateData.category,
+        description: updateData.description,
+        price: parseFloat(updateData.price),
+        address: updateData.address,
+        seller_phonenumber: updateData.seller_phonenumber,
+      }),
     };
-
-    return JSON.stringify(descriptionJSON);
+    console.log('updateJSON: ', updateJSON);
+    return updateJSON;
   };
 
-  const upload = async (uploadData) => {
-    console.log('upload', uploadData);
-    const formData = new FormData();
-    formData.append('title', uploadData.title);
-    formData.append('description', compileDataIntoJSON(uploadData));
-    const filename = image.split('/').pop();
-
-    let fileExtension = filename.split('.').pop();
-    fileExtension = fileExtension === 'jpg' ? 'jpeg' : fileExtension;
-
-    formData.append('file', {
-      uri: image,
-      name: filename,
-      type: `${type}/${fileExtension}`,
-    });
+  const modifyListing = async (updateData) => {
+    const updatedDataJSON = dataForUpdate(updateData);
 
     try {
       const token = await AsyncStorage.getItem('userToken');
-      const response = await postMedia(formData, token);
-      console.log('lataus', response);
-      const tagResponse = await postTag(
-        {
-          file_id: response.file_id,
-          tag: appId,
-        },
-        token,
-      );
-      console.log('postTag', tagResponse);
+      const result = await putMedia(fileId, token, updatedDataJSON);
+      console.log('updateMedia()', result.message);
+      Alert.alert('Update succeeded', result.message);
       setUpdate(!update);
-      Alert.alert('Upload', `${response.message} (id: ${response.file_id})`, [
-        {
-          text: 'Ok',
-          onPress: () => {
-            resetForm();
-            navigation.navigate('Categories');
-          },
-        },
-      ]);
     } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  const resetForm = () => {
-    setImage(placeholderImage);
-    setType('image');
-    reset();
-  };
-
-  const pickImage = async () => {
-    const result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [4, 3],
-    });
-
-    if (!result.canceled) {
-      setImage(result.assets[0].uri);
-      setType(result.assets[0].type);
+      console.error(error);
     }
   };
 
@@ -118,9 +74,8 @@ const Upload = ({navigation}) => {
     <ScrollView>
       <Card>
         <Card.Image
-          source={{uri: image}}
-          style={styles.uploadImage}
-          onPress={pickImage}
+          source={{uri: mediaUrl + instrumentParams.filename}}
+          style={styles.modifyImage}
         />
         <Controller
           control={control}
@@ -152,7 +107,7 @@ const Upload = ({navigation}) => {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              errorMessage={errors.description?.message}
+              errorMessage={errors.title?.message}
             />
           )}
           name="title"
@@ -183,7 +138,7 @@ const Upload = ({navigation}) => {
               placeholder="Price"
               onBlur={onBlur}
               onChangeText={onChange}
-              value={value}
+              value={value !== undefined ? value.toString() : ''}
               errorMessage={errors.price?.message}
             />
           )}
@@ -221,23 +176,26 @@ const Upload = ({navigation}) => {
           )}
           name="seller_phonenumber"
         />
-        <Button title="Choose Media" onPress={pickImage} />
-        <Button title="Reset" color={'error'} onPress={resetForm} />
         <Button
-          loading={loading}
-          disabled={
-            image == placeholderImage || errors.description || errors.title
-          }
-          title="Upload"
-          onPress={handleSubmit(upload)}
+          title="Reset"
+          color={'error'}
+          onPress={() => {
+            reset();
+          }}
+        />
+        <Button
+          disabled={errors.description || errors.title}
+          title="Update"
+          onPress={handleSubmit(modifyListing)}
         />
       </Card>
     </ScrollView>
   );
 };
 
-Upload.propTypes = {
+EditListing.propTypes = {
   navigation: PropTypes.object,
+  route: PropTypes.object,
 };
 
-export default Upload;
+export default EditListing;

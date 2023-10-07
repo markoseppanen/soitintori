@@ -1,47 +1,38 @@
 import {FlatList} from 'react-native';
+import {MainContext} from '../contexts/MainContext';
+import {useContext} from 'react';
+import {useMedia} from '../hooks/ApiHooks';
 import CategoryListItem from './CategoryListItem';
-
-//temp array before better one
-const categoryArray = [
-  {
-    id: '0',
-    categoryTitle: 'Guitars',
-    image: require('../assets/guitars.png'),
-  },
-  {
-    id: '1',
-    categoryTitle: 'Drums',
-    image: require('../assets/drums.png'),
-  },
-  {
-    id: '2',
-    categoryTitle: 'Pianos',
-    image: require('../assets/pianos.png'),
-  },
-  {
-    id: '3',
-    categoryTitle: 'Bassos',
-    image: require('../assets/bassos.png'),
-  },
-  {
-    id: '4',
-    categoryTitle: 'WindInstruments',
-    image: require('../assets/windinstruments.png'),
-  },
-  {
-    id: '5',
-    categoryTitle: 'Others',
-    image: require('../assets/guitars.png'),
-  },
-];
+import PropTypes from 'prop-types';
+import {Text} from '@rneui/themed';
+import {fetchCategoryArray} from '../utils/functions';
 
 const CategoryList = ({navigation}) => {
+  const {update} = useContext(MainContext);
+  const {mediaArray} = useMedia(update);
+
+  const sortedCategoryArray = fetchCategoryArray(mediaArray);
+
+  if (!sortedCategoryArray || sortedCategoryArray.length === 0) {
+    return <Text>Nothing to show yet</Text>;
+  }
+
   return (
     <FlatList
-      data={categoryArray}
-      renderItem={({item}) => <CategoryListItem navigation={navigation} singleCategory={item} />}
+      data={sortedCategoryArray}
+      renderItem={({item}) => (
+        <CategoryListItem
+          navigation={navigation}
+          singleCategory={item}
+          categoryTitle={item.description.categoryTitle}
+        />
+      )}
     />
   );
+};
+
+CategoryList.propTypes = {
+  navigation: PropTypes.object,
 };
 
 export default CategoryList;

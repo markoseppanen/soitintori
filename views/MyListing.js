@@ -1,21 +1,21 @@
 import React from 'react';
 import {View, SafeAreaView} from 'react-native';
-import CategoryList from '../components/CategoryList';
 import PropTypes from 'prop-types';
 import {Text} from '@rneui/themed';
 import styles from '../styles/Styles';
+import MyCurrentList from '../components/MyCurrentList';
 
-export const Categories = ({navigation}) => {
+export const MyListing = ({navigation}) => {
   return (
     <SafeAreaView style={styles.containerCategories}>
       <View style={styles.pageTitleContainer}>
-        <Text style={styles.pageTitle}>Soitintori</Text>
+        <Text style={styles.pageTitle}>My current listing</Text>
       </View>
-      <CategoryList navigation={navigation} />
+      <MyCurrentList navigation={navigation} />
     </SafeAreaView>
   );
 };
 
-Categories.propTypes = {
+MyListing.propTypes = {
   navigation: PropTypes.object,
 };
