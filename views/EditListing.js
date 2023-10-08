@@ -52,7 +52,7 @@ const EditListing = ({navigation, route}) => {
         seller_phonenumber: updateData.seller_phonenumber,
       }),
     };
-    console.log('updateJSON: ', updateJSON);
+    // console.log('updateJSON: ', updateJSON);
     return updateJSON;
   };
 
