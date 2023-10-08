@@ -29,6 +29,78 @@ const styles = StyleSheet.create({
     textShadowOffset: {width: 3, height: 3},
     textShadowRadius: 3,
   },
+  loadingContainer: {
+    marginTop: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  loadingCategories: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  // Categories top tabs
+  tabsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'rgba(231, 223, 223, 0.2)',
+  },
+  tabButton: {
+    width: '48%',
+    paddingVertical: 10,
+    alignItems: 'center',
+  },
+  selectedTab: {
+    backgroundColor: 'black',
+  },
+  tabButtonText: {
+    fontSize: 16,
+    color: 'black',
+  },
+  selectedTabText: {
+    color: 'white',
+  },
+  // SearchBar
+  searchResultContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  noResultText: {
+    fontSize: 20,
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    width: 'auto',
+  },
+  searchInput: {
+    color: 'rgb(0,0,0)',
+    fontSize: 20,
+    borderWidth: 1,
+    borderColor: 'rgb(0,0,0)',
+    borderRadius: 3,
+    paddingTop: 3,
+    paddingBottom: 3,
+    paddingLeft: 10,
+    paddingRight: 10,
+    margin: 20,
+    width: '50%',
+  },
+  searchButton: {
+    backgroundColor: 'rgb(0,0,0)',
+    color: 'rgb(231,223,223)',
+    textAlign: 'center',
+    fontSize: 20,
+    padding: 10,
+    borderRadius: 10,
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  searchButtonText: {
+    textAlign: 'center',
+    fontSize: 20,
+    color: 'white',
+  },
   // CategoriesListItem.js
   containerCategoryListItem: {
     position: 'relative',
@@ -124,6 +196,11 @@ const styles = StyleSheet.create({
     top: 20,
     right: 20,
     zIndex: 1,
+  },
+  // RNEListItems
+  listItemContainer: {
+    backgroundColor: 'rgb(231,223,223)',
+    width: 'auto',
   },
 });
 
