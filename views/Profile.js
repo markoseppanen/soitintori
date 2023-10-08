@@ -34,6 +34,14 @@ export const Profile = ({navigation}) => {
     ]);
   };
 
+  const myListing = async () => {
+    navigation.navigate('Current Listing');
+  };
+
+  const toHistory = async () => {
+    navigation.navigate('Personal History');
+  };
+
   return (
     <ScrollView>
       <Card>
@@ -67,7 +75,10 @@ export const Profile = ({navigation}) => {
         </Button>
       </Card>
       <Card>
-        <Button size="sm" onPress={logOut}>
+        <Button size="sm" onPress={myListing}>
+          Current Listing
+        </Button>
+        <Button size="sm" onPress={toHistory}>
           History
           <Icon name="history"></Icon>
         </Button>

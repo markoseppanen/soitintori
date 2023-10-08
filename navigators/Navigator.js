@@ -8,9 +8,11 @@ import {MainContext} from '../contexts/MainContext';
 import {Instruments} from '../views/Instruments';
 import {SingleInstrument} from '../views/SingleInstrument';
 import {Categories} from '../views/Categories';
-// import {AddListing} from '../views/AddListing';
+import {AddListing} from '../views/AddListing';
 import {Profile} from '../views/Profile';
-import Upload from '../views/Upload';
+import EditListing from '../views/EditListing';
+import {History} from '../views/History';
+import {MyListing} from '../views/MyListing';
 
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
@@ -44,22 +46,22 @@ const TabScreen = () => {
         }}
       />
       {isLoggedIn ? (
-        <>
-          <Tab.Screen
-            name="Add Listing"
-            component={Upload}
-            options={{
-              tabBarIcon: ({color}) => <Icon name="add" color={color} />,
-            }}
-          />
-          <Tab.Screen
-            name="MyProfile"
-            component={StackScreen2}
-            options={{
-              tabBarIcon: ({color}) => <Icon name="person" color={color} />,
-            }}
-          />
-        </>
+        <Tab.Screen
+          name="Add Listing"
+          component={StackScreen2}
+          options={{
+            tabBarIcon: ({color}) => <Icon name="add" color={color} />,
+          }}
+        />
+      ) : null}
+      {isLoggedIn ? (
+        <Tab.Screen
+          name="Profile"
+          component={StackScreen3}
+          options={{
+            tabBarIcon: ({color}) => <Icon name="person" color={color} />,
+          }}
+        />
       ) : (
         <Tab.Screen
           name="Login"
@@ -103,6 +105,17 @@ const StackScreen = () => {
           },
         }}
       />
+      <Stack.Screen
+        name="Edit Listing"
+        component={EditListing}
+        options={{
+          title: 'Edit announcement',
+          headerBackTitle: 'Back',
+          headerStyle: {
+            backgroundColor: 'rgb(231,223,223)',
+          },
+        }}
+      />
     </Stack.Navigator>
   );
 };
@@ -111,9 +124,43 @@ const StackScreen2 = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
-        name="Profile"
+        name="AddListing"
+        component={AddListing}
+        options={{headerShown: false}}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const StackScreen3 = () => {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="MyProfile"
         component={Profile}
         options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Personal History"
+        component={History}
+        options={{
+          title: '',
+          headerBackTitle: 'Back',
+          headerStyle: {
+            backgroundColor: 'rgb(231,223,223)',
+          },
+        }}
+      />
+      <Stack.Screen
+        name="Current Listing"
+        component={MyListing}
+        options={{
+          title: '',
+          headerBackTitle: 'Back',
+          headerStyle: {
+            backgroundColor: 'rgb(231,223,223)',
+          },
+        }}
       />
     </Stack.Navigator>
   );

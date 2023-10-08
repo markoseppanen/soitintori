@@ -3,6 +3,62 @@ import {apiUrl, appId} from '../utils/app-config';
 import {doFetch} from '../utils/functions';
 import {MainContext} from '../contexts/MainContext';
 
+const useComment = () => {
+  const [commentsArray, setCommentArray] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const loadComments = async (fileId) => {
+    try {
+      const json = await doFetch(apiUrl + 'comments/file/' + fileId);
+      // console.log('json from loadComments', json);
+
+      setCommentArray((prevComments) => [...prevComments, ...json]);
+    } catch (error) {
+      console.error('loadComments failed', error);
+    }
+  };
+
+  const getCommentsByToken = async (token) => {
+    const options = {
+      method: 'GET',
+      headers: {
+        'x-access-token': token,
+      },
+    };
+
+    const response = await doFetch(apiUrl + 'comments', options);
+    return response;
+  };
+
+  const postComment = async (token, commentData) => {
+    setLoading(true);
+    try {
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-access-token': token,
+        },
+        body: JSON.stringify(commentData),
+      };
+      const uploadResult = await doFetch(apiUrl + 'comments', options);
+      return uploadResult;
+    } catch (error) {
+      throw new Error('postComment failed: ' + error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return {
+    commentsArray,
+    loadComments,
+    loading,
+    postComment,
+    getCommentsByToken,
+  };
+};
+
 const useMedia = (update, myFilesOnly) => {
   const {user} = useContext(MainContext);
   const [mediaArray, setMediaArray] = useState([]);
@@ -110,7 +166,7 @@ const useUser = () => {
 
   const postUser = async (userData) => {
     const options = {
-      method: 'POST',
+      method: 'POSt',
       headers: {
         'Content-Type': 'application/json',
       },
@@ -221,4 +277,4 @@ const useFavourite = () => {
   };
 };
 
-export {useMedia, useAuthentication, useUser, useTag, useFavourite};
+export {useComment, useMedia, useAuthentication, useUser, useTag, useFavourite};

@@ -1,43 +1,37 @@
 import {FlatList} from 'react-native';
 import {useMedia, useComment} from '../hooks/ApiHooks';
-import InstrumentListItem from './InstrumentListItem';
+import MyCurrentListItem from './MyCurrentListItem';
 import PropTypes from 'prop-types';
 import {Text} from '@rneui/themed';
 import {useContext, useEffect, useState} from 'react';
 import {MainContext} from '../contexts/MainContext';
 import {createInstrumentArray} from '../utils/functions.js';
 
-const InstrumentList = ({navigation, categoryTitle}) => {
+const MyCurrentList = ({navigation}) => {
   const {update} = useContext(MainContext);
+  const {user} = useContext(MainContext);
   const {mediaArray} = useMedia(update);
   const {loadComments, commentsArray} = useComment();
   const [commentsFetched, setCommentsFetched] = useState(false);
 
-  useEffect(() => {
-    // console.log('checking the categoryTitle', categoryTitle);
-  }, [categoryTitle]);
+  const instrumentArray = createInstrumentArray(mediaArray);
 
-  const instrumentArray = createInstrumentArray(mediaArray); // function in utils/functions.js
-
-  const singleCategoryInstruments = instrumentArray.filter(
-    (item) => item.description.category === categoryTitle,
+  const userItemsArray = instrumentArray.filter(
+    (item) => item.user_id === user.user_id,
   );
 
-  const fileIdArray = singleCategoryInstruments.map((item) => item.file_id);
-  // console.log('fileIdArray: ', fileIdArray);
+  const fileIdArray = userItemsArray.map((item) => item.file_id);
 
   const fetchComments = async () => {
     try {
       if (!commentsFetched && fileIdArray.length > 0) {
-        // array of promises
         const loadCommentsPromises = fileIdArray.map(async (file_id) => {
           await loadComments(file_id);
         });
-        // wait for all loadComments
+
         await Promise.all(loadCommentsPromises);
         setCommentsFetched(true);
       }
-      // console.log('Comments array', commentsArray);
     } catch (error) {
       console.error('fetchComments', error);
     }
@@ -47,23 +41,21 @@ const InstrumentList = ({navigation, categoryTitle}) => {
     if (fileIdArray.length > 0) {
       fetchComments();
     }
-  }, [fileIdArray]); // if fileIdArray changes
+  }, [fileIdArray]);
 
-  const filteredInstrumentArray = singleCategoryInstruments.filter((item) => {
+  const filteredInstrumentArray = userItemsArray.filter((item) => {
     const relatedComments = commentsArray.filter(
       (comment) => comment.file_id === item.file_id,
     );
-    // console.log(`Related Comments for item ${item.file_id}:`, relatedComments);
 
-    // isSold true?
     const hasSoldComment = relatedComments.some((comment) => {
       const commentData = JSON.parse(comment.comment);
       return commentData.isSold === true;
     });
-    // console.log(`Has Sold Comment for item ${item.file_id}:`, hasSoldComment);
 
     return !hasSoldComment;
   });
+  // console.log('own items', filteredInstrumentArray);
 
   if (filteredInstrumentArray.length === 0) {
     return <Text>Nothing to show yet</Text>;
@@ -72,17 +64,16 @@ const InstrumentList = ({navigation, categoryTitle}) => {
   return (
     <FlatList
       data={filteredInstrumentArray}
-      numColumns={2}
+      numColumns={1}
       renderItem={({item}) => (
-        <InstrumentListItem navigation={navigation} singleInstrument={item} />
+        <MyCurrentListItem navigation={navigation} singleCurrentItem={item} />
       )}
     />
   );
 };
 
-InstrumentList.propTypes = {
+MyCurrentList.propTypes = {
   navigation: PropTypes.object.isRequired,
-  categoryTitle: PropTypes.string.isRequired,
 };
 
-export default InstrumentList;
+export default MyCurrentList;
