@@ -25,7 +25,22 @@ const styles = StyleSheet.create({
   // AddListing.js
   containerAddListing: {
     flex: 1,
-    backgroundColor: 'rgb(255,0,0)',
+    backgroundColor: 'rgb(0,0,0)',
+  },
+  // Instruments.js
+  containerInstruments: {
+    flex: 1,
+    paddingTop: Platform.OS === 'android' ? 30 : 0,
+    backgroundColor: 'rgb(0,0,0)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  //MyCurrentListItem
+  myCurrentListItemRNE: {
+    backgroundColor: 'rgb(0, 0, 0)',
+  },
+  myCurrentListItemRNETitle: {
+    color: 'rgb(255,255,255)',
   },
   // Categories.js styles
   containerCategories: {
@@ -89,9 +104,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(0,0,0)',
     flex: 1,
   },
-  singleInstrumentCard: {
-
-  },
+  singleInstrumentCard: {},
   singleInstrumentCardTop: {
     backgroundColor: 'rgb(231,223,223)',
     padding: 5,
