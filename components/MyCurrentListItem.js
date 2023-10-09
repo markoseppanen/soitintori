@@ -4,7 +4,7 @@ import {Avatar, ListItem as RNEListItem} from '@rneui/themed';
 
 const MyCurrentListItem = ({singleCurrentItem}) => {
   return (
-    <RNEListItem containerStyle={{backgroundColor: 'rgb(231,223,223)'}}>
+    <RNEListItem containerStyle={{backgroundColor: 'rgb(0, 0, 0)'}}>
       <Avatar
         size="large"
         source={{uri: mediaUrl + singleCurrentItem.thumbnails.w160}}

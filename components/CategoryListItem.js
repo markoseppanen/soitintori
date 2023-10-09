@@ -22,7 +22,7 @@ const CategoryListItem = ({singleCategory, navigation, categoryTitle}) => {
 
   return (
     <RNEListItem
-      containerStyle={{backgroundColor: 'rgb(231,223,223)'}}
+      containerStyle={{backgroundColor: 'rgb(0,0,0)', margin: -5}}
       onPress={() => {
         navigation.navigate('Instruments', {categoryTitle});
       }}
