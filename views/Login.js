@@ -45,7 +45,7 @@ const Login = ({navigation}) => {
         ) : (
           <LoginForm />
         )}
-        <Card>
+        <Card containerStyle={styles.loginCard}>
           {toggleRegister ? (
             <Card.Title setToggleRegister={setToggleRegister}>
               Already Registered? Login Here

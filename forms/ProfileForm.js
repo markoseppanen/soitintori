@@ -65,7 +65,7 @@ const ProfileForm = ({user}) => {
   };
 
   return (
-    <Card style={styles.containerProfileForm}>
+    <Card>
       <Card.Title>Update Profile</Card.Title>
       <Controller
         control={control}

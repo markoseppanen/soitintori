@@ -4,6 +4,7 @@ import {useUser} from '../hooks/ApiHooks';
 import {Button, Card, Input} from '@rneui/themed';
 import {Alert} from 'react-native';
 import {PropTypes} from 'prop-types';
+import styles from '../styles/Styles';
 
 const RegisterForm = ({setToggleRegister}) => {
   const {postUser, checkUsername} = useUser();
@@ -50,7 +51,7 @@ const RegisterForm = ({setToggleRegister}) => {
   };
 
   return (
-    <Card>
+    <Card containerStyle={styles.loginCard}>
       <Card.Title>Register</Card.Title>
       <Controller
         control={control}

@@ -45,7 +45,7 @@ export const Profile = ({navigation}) => {
 
   return (
     <ScrollView style={styles.containerProfile}>
-      <Card style={styles.cardProfile}>
+      <Card containerStyle={styles.cardProfile}>
         <Card.Title>Profile</Card.Title>
         <ListItem>
           <Icon name="person" />
@@ -73,7 +73,7 @@ export const Profile = ({navigation}) => {
           <Icon name="logout"></Icon>
         </Button>
       </Card>
-      <Card>
+      <Card containerStyle={styles.cardProfile}>
         <Button size="sm" onPress={myListing}>
           Current Listing
         </Button>
@@ -83,7 +83,7 @@ export const Profile = ({navigation}) => {
           <Icon name="history"></Icon>
         </Button>
       </Card>
-      <Card>
+      <Card containerStyle={styles.cardProfile}>
         <ProfileForm user={user} />
       </Card>
     </ScrollView>

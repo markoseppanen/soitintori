@@ -13,20 +13,19 @@ const styles = StyleSheet.create({
   cardProfile: {
     backgroundColor: 'rgb(255,0,0)',
   },
-  // ProfileForm.js
-  containerProfileForm: {
-    flex: 1,
-    backgroundColor: 'rgb(255,0,0)',
-  },
   // Login.js
   containerLogin: {
     flex: 1,
     backgroundColor: 'rgb(0,0,0)',
   },
+  loginCard: {
+    backgroundColor: 'rgb(255,0,0)',
+    color: 'rgb(0,0,0)',
+  },
   // AddListing.js
   containerAddListing: {
     flex: 1,
-    backgroundColor: 'rgb(0,0,0)',
+    backgroundColor: 'rgb(255,0,0)',
   },
   // Categories.js styles
   containerCategories: {
@@ -87,8 +86,11 @@ const styles = StyleSheet.create({
   },
   // SingleInstrument.js
   singleInstrumentContainer: {
-    backgroundColor: 'rgb(255,0,0)',
+    backgroundColor: 'rgb(0,0,0)',
     flex: 1,
+  },
+  singleInstrumentCard: {
+
   },
   singleInstrumentCardTop: {
     backgroundColor: 'rgb(231,223,223)',
