@@ -8,6 +8,7 @@ import LoginForm from '../forms/LoginForm';
 import RegisterForm from '../forms/RegisterForm';
 import {Button} from '@rneui/base';
 import {Card} from '@rneui/themed';
+import styles from '../styles/Styles';
 
 const Login = ({navigation}) => {
   const {setIsLoggedIn, setUser} = useContext(MainContext);
@@ -33,7 +34,7 @@ const Login = ({navigation}) => {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.containerLogin}>
       <TouchableOpacity
         onPress={() => Keyboard.dismiss()}
         style={{flex: 1}}

@@ -1,10 +1,11 @@
-import {Alert, ScrollView, View} from 'react-native';
+import {Alert, ScrollView} from 'react-native';
 import {Button, Card, Icon, ListItem, Text} from '@rneui/themed';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useContext, useState} from 'react';
+import {useContext} from 'react';
 import {MainContext} from '../contexts/MainContext';
 import ProfileForm from '../forms/ProfileForm';
 import {PropTypes} from 'prop-types';
+import styles from '../styles/Styles';
 
 export const Profile = ({navigation}) => {
   const {setIsLoggedIn, user} = useContext(MainContext);
@@ -43,10 +44,9 @@ export const Profile = ({navigation}) => {
   };
 
   return (
-    <ScrollView>
-      <Card>
+    <ScrollView style={styles.containerProfile}>
+      <Card style={styles.cardProfile}>
         <Card.Title>Profile</Card.Title>
-
         <ListItem>
           <Icon name="person" />
           <ListItem.Title>{fullName.full_name}</ListItem.Title>
@@ -63,7 +63,6 @@ export const Profile = ({navigation}) => {
           <Icon name="apartment" />
           <ListItem.Title>{fullName.postal_code}</ListItem.Title>
         </ListItem>
-
         <ListItem>
           <Icon name="email" />
           <ListItem.Title>{user.email}</ListItem.Title>
@@ -78,6 +77,7 @@ export const Profile = ({navigation}) => {
         <Button size="sm" onPress={myListing}>
           Current Listing
         </Button>
+        <Text></Text>
         <Button size="sm" onPress={toHistory}>
           History
           <Icon name="history"></Icon>
