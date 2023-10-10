@@ -8,6 +8,7 @@ import LoginForm from '../forms/LoginForm';
 import RegisterForm from '../forms/RegisterForm';
 import {Button} from '@rneui/base';
 import {Card} from '@rneui/themed';
+import styles from '../styles/Styles';
 
 const Login = ({navigation}) => {
   const {setIsLoggedIn, setUser} = useContext(MainContext);
@@ -17,7 +18,6 @@ const Login = ({navigation}) => {
   const checkToken = async () => {
     try {
       const token = await AsyncStorage.getItem('userToken');
-      //console.log('token', token);
       const userData = await getUserByToken(token);
       if (userData) {
         setIsLoggedIn(true);
@@ -33,7 +33,7 @@ const Login = ({navigation}) => {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.containerLogin}>
       <TouchableOpacity
         onPress={() => Keyboard.dismiss()}
         style={{flex: 1}}
@@ -44,7 +44,7 @@ const Login = ({navigation}) => {
         ) : (
           <LoginForm />
         )}
-        <Card>
+        <Card containerStyle={styles.loginCard}>
           {toggleRegister ? (
             <Card.Title setToggleRegister={setToggleRegister}>
               Already Registered? Login Here

@@ -6,7 +6,7 @@ import {mediaUrl} from '../utils/app-config';
 const InstrumentListItem = ({navigation, singleInstrument}) => {
   return (
     <RNEListItem
-      containerStyle={{backgroundColor: 'rgb(231,223,223)'}}
+      containerStyle={{backgroundColor: 'rgb(0, 0, 0)'}}
       onPress={() => {
         navigation.navigate('SingleInstrument', singleInstrument);
       }}

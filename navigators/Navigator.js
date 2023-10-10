@@ -22,15 +22,18 @@ const TabScreen = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarActiveTintColor: 'blue',
-        tabBarInactiveTintColor: 'white',
-        tabBarActiveBackgroundColor: 'rgb(160,151,160)',
-        tabBarInactiveBackgroundColor: 'rgb(160,151,160)',
+        tabBarActiveTintColor: 'rgb(255, 0, 0)',
+        tabBarInactiveTintColor: 'rgb(255, 255, 255)',
+        tabBarActiveBackgroundColor: 'rgb(0, 0, 0)',
+        tabBarInactiveBackgroundColor: 'rgb(0, 0, 0)',
         tabBarStyle: {
-          height: 60,
+          height: 65,
+          backgroundColor: 'rgb(0, 0, 0)',
+          borderTopColor: 'rgb(255, 255, 255)',
+          paddingBottom: 10,
         },
         tabBarLabelStyle: {
-          fontSize: 14,
+          fontSize: 16,
           margin: 2,
           alignItems: 'center',
           justifyContent: 'center',
@@ -81,7 +84,12 @@ const StackScreen = () => {
       <Stack.Screen
         name="Categories"
         component={Categories}
-        options={{headerShown: false}}
+        options={{
+          headerShown: false,
+          headerStyle: {
+            backgroundColor: 'rgb(0, 0, 0)',
+          },
+        }}
       />
       <Stack.Screen
         name="Instruments"
@@ -90,8 +98,9 @@ const StackScreen = () => {
           title: '',
           headerBackTitle: 'Back',
           headerStyle: {
-            backgroundColor: 'rgb(231,223,223)',
+            backgroundColor: 'rgb(0, 0, 0)',
           },
+          headerTintColor: 'red',
         }}
       />
       <Stack.Screen
@@ -101,8 +110,9 @@ const StackScreen = () => {
           title: '',
           headerBackTitle: 'Back',
           headerStyle: {
-            backgroundColor: 'rgb(231,223,223)',
+            backgroundColor: 'rgb(0, 0, 0)',
           },
+          headerTintColor: 'red',
         }}
       />
       <Stack.Screen
@@ -112,8 +122,9 @@ const StackScreen = () => {
           title: 'Edit announcement',
           headerBackTitle: 'Back',
           headerStyle: {
-            backgroundColor: 'rgb(231,223,223)',
+            backgroundColor: 'rgb(0, 0, 0)',
           },
+          headerTintColor: 'red',
         }}
       />
     </Stack.Navigator>
@@ -147,8 +158,9 @@ const StackScreen3 = () => {
           title: '',
           headerBackTitle: 'Back',
           headerStyle: {
-            backgroundColor: 'rgb(231,223,223)',
+            backgroundColor: 'rgb(0, 0, 0)',
           },
+          headerTintColor: 'red',
         }}
       />
       <Stack.Screen
@@ -158,8 +170,9 @@ const StackScreen3 = () => {
           title: '',
           headerBackTitle: 'Back',
           headerStyle: {
-            backgroundColor: 'rgb(231,223,223)',
+            backgroundColor: 'rgb(0, 0, 0)',
           },
+          headerTintColor: 'red',
         }}
       />
     </Stack.Navigator>

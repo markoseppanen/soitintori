@@ -5,16 +5,53 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
+  // Profile.js
+  containerProfile: {
+    flex: 1,
+    backgroundColor: 'rgb(0,0,0)',
+  },
+  cardProfile: {
+    backgroundColor: 'rgb(255,0,0)',
+  },
+  // Login.js
+  containerLogin: {
+    flex: 1,
+    backgroundColor: 'rgb(0,0,0)',
+  },
+  loginCard: {
+    backgroundColor: 'rgb(255,0,0)',
+    color: 'rgb(0,0,0)',
+  },
+  // AddListing.js
+  containerAddListing: {
+    flex: 1,
+    backgroundColor: 'rgb(0,0,0)',
+  },
+  // Instruments.js
+  containerInstruments: {
+    flex: 1,
+    paddingTop: Platform.OS === 'android' ? 30 : 0,
+    backgroundColor: 'rgb(0,0,0)',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  //MyCurrentListItem
+  myCurrentListItemRNE: {
+    backgroundColor: 'rgb(0, 0, 0)',
+  },
+  myCurrentListItemRNETitle: {
+    color: 'rgb(255,255,255)',
+  },
   // Categories.js styles
   containerCategories: {
     flex: 1,
     paddingTop: Platform.OS === 'android' ? 30 : 0,
-    backgroundColor: 'rgb(231,223,223)',
+    backgroundColor: 'rgb(0,0,0)',
     alignItems: 'center',
     justifyContent: 'center',
   },
   pageTitleContainer: {
-    backgroundColor: 'rgb(231,223,223)',
+    backgroundColor: 'rgb(255,0,0)',
     padding: 10,
     borderRadius: 10,
     alignSelf: 'flex-start',
@@ -64,9 +101,10 @@ const styles = StyleSheet.create({
   },
   // SingleInstrument.js
   singleInstrumentContainer: {
-    backgroundColor: 'rgb(231,223,223)',
+    backgroundColor: 'rgb(0,0,0)',
     flex: 1,
   },
+  singleInstrumentCard: {},
   singleInstrumentCardTop: {
     backgroundColor: 'rgb(231,223,223)',
     padding: 5,

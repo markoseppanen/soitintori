@@ -5,6 +5,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import {MainContext} from '../contexts/MainContext';
 import {Button, Card, Input} from '@rneui/themed';
 import {Alert} from 'react-native';
+import styles from '../styles/Styles';
 
 const LoginForm = () => {
   const {postLogin} = useAuthentication();
@@ -33,7 +34,7 @@ const LoginForm = () => {
   };
 
   return (
-    <Card>
+    <Card containerStyle={styles.loginCard}>
       <Card.Title>Login</Card.Title>
       <Controller
         control={control}

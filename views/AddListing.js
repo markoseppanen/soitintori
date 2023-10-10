@@ -115,7 +115,7 @@ export const AddListing = ({navigation}) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView style={styles.containerAddListing}>
       <Card>
         <Card.Image
           source={{uri: image}}

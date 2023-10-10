@@ -6,6 +6,7 @@ import {Alert} from 'react-native';
 import {PropTypes} from 'prop-types';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {MainContext} from '../contexts/MainContext';
+import styles from '../styles/Styles';
 
 const ProfileForm = ({user}) => {
   const {putUser, checkUsername, getUserByToken} = useUser();
