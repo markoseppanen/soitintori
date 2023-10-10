@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgb(0,0,0)',
   },
+
   // Instruments.js
   containerInstruments: {
     flex: 1,

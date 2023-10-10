@@ -54,6 +54,7 @@ const Login = ({navigation}) => {
           )}
 
           <Button
+            buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
             onPress={() => {
               setToggleRegister(!toggleRegister);
             }}

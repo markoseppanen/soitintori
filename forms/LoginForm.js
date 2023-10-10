@@ -48,7 +48,7 @@ const LoginForm = () => {
             onChangeText={onChange}
             value={value}
             autoCapitalize="none"
-            textAlign='center'
+            textAlign="center"
             errorMessage={errors.username?.message}
           />
         )}
@@ -68,14 +68,18 @@ const LoginForm = () => {
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
-            textAlign='center'
+            textAlign="center"
             errorMessage={errors.password?.message}
           />
         )}
         name="password"
       />
 
-      <Button title="Submit" onPress={handleSubmit(logIn)} />
+      <Button
+        buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+        title="Submit"
+        onPress={handleSubmit(logIn)}
+      />
     </Card>
   );
 };

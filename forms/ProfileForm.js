@@ -69,7 +69,10 @@ const ProfileForm = ({user}) => {
       <Card.Title>Update Profile</Card.Title>
       <Controller
         control={control}
-        rules={{minLength: {value: 3, message: 'min length is 3 characters'}}}
+        rules={{
+          required: {value: true, message: 'is required'},
+          minLength: {value: 3, message: 'min length is 3 characters'},
+        }}
         render={({field: {onChange, onBlur, value}}) => (
           <Input
             placeholder="Full name"
@@ -83,6 +86,9 @@ const ProfileForm = ({user}) => {
       />
       <Controller
         control={control}
+        rules={{
+          required: {value: true, message: 'is required'},
+        }}
         render={({field: {onChange, onBlur, value}}) => (
           <Input
             placeholder="Email"
@@ -97,7 +103,10 @@ const ProfileForm = ({user}) => {
       />
       <Controller
         control={control}
-        rules={{minLength: {value: 8, message: 'min length is 8 characters'}}}
+        rules={{
+          required: {value: true, message: 'is required'},
+          minLength: {value: 8, message: 'min length is 8 characters'},
+        }}
         render={({field: {onChange, onBlur, value}}) => (
           <Input
             placeholder="Phonenumber"
@@ -111,7 +120,10 @@ const ProfileForm = ({user}) => {
       />
       <Controller
         control={control}
-        rules={{minLength: {value: 3, message: 'min length is 3 characters'}}}
+        rules={{
+          required: {value: true, message: 'is required'},
+          minLength: {value: 3, message: 'min length is 3 characters'},
+        }}
         render={({field: {onChange, onBlur, value}}) => (
           <Input
             placeholder="Address"
@@ -125,7 +137,10 @@ const ProfileForm = ({user}) => {
       />
       <Controller
         control={control}
-        rules={{minLength: {value: 3, message: 'min length is 3 characters'}}}
+        rules={{
+          required: {value: true, message: 'is required'},
+          minLength: {value: 3, message: 'min length is 3 characters'},
+        }}
         render={({field: {onChange, onBlur, value}}) => (
           <Input
             placeholder="Postal code"
@@ -140,6 +155,7 @@ const ProfileForm = ({user}) => {
       <Controller
         control={control}
         rules={{
+          required: {value: true, message: 'is required'},
           minLength: {value: 3, message: 'min length is 3 characters'},
           validate: async (value) => {
             try {
@@ -169,6 +185,7 @@ const ProfileForm = ({user}) => {
       <Controller
         control={control}
         rules={{
+          required: {value: true, message: 'is required'},
           minLength: {value: 5, message: 'min length is 5 characters'},
         }}
         render={({field: {onChange, onBlur, value}}) => (
@@ -186,6 +203,7 @@ const ProfileForm = ({user}) => {
       <Controller
         control={control}
         rules={{
+          required: {value: true, message: 'is required'},
           validate: (value) => {
             const {password} = getValues();
             if (password.length < 5) {
@@ -207,7 +225,11 @@ const ProfileForm = ({user}) => {
         name="confirm_password"
       />
 
-      <Button title="Update!" onPress={handleSubmit(update)} />
+      <Button
+        title="Update!"
+        buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+        onPress={handleSubmit(update)}
+      />
     </Card>
   );
 };

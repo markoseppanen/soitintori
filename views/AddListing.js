@@ -221,10 +221,20 @@ export const AddListing = ({navigation}) => {
           )}
           name="seller_phonenumber"
         />
-        <Button title="Choose Media" onPress={pickImage} />
-        <Button title="Reset" color={'error'} onPress={resetForm} />
+        <Button
+          title="Choose Media"
+          buttonStyle={{backgroundColor: 'red', borderRadius: 20}}
+          onPress={pickImage}
+        />
+        <Button
+          title="Reset"
+          buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+          color={'error'}
+          onPress={resetForm}
+        />
         <Button
           loading={loading}
+          buttonStyle={{backgroundColor: 'red', borderRadius: 20}}
           disabled={
             image == placeholderImage || errors.description || errors.title
           }
