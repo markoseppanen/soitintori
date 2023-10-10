@@ -1,13 +1,13 @@
 import React from 'react';
-import {View, SafeAreaView, TouchableOpacity} from 'react-native';
-import CategoryList from '../components/CategoryList';
+import {View, Platform, SafeAreaView, TouchableOpacity} from 'react-native';
 import PropTypes from 'prop-types';
 import {Text, Icon} from '@rneui/themed';
 import styles from '../styles/Styles';
+import SearchList from '../components/SearchList';
 
-export const Categories = ({navigation}) => {
-  const handleSearchPress = () => {
-    navigation.navigate('Search');
+const Search = ({navigation}) => {
+  const handleBackPress = () => {
+    navigation.navigate('Categories');
   };
   return (
     <SafeAreaView style={styles.containerCategories}>
@@ -16,16 +16,18 @@ export const Categories = ({navigation}) => {
           <Text style={styles.pageTitle}>Soitintori</Text>
         </View>
         <View style={styles.searchIconView}>
-          <TouchableOpacity onPress={handleSearchPress}>
-            <Icon name="search" size={40} color="white" />
+          <TouchableOpacity onPress={handleBackPress}>
+            <Icon name="arrow-back" size={40} color="white" />
           </TouchableOpacity>
         </View>
       </View>
-      <CategoryList navigation={navigation} />
+      <SearchList navigation={navigation} />
     </SafeAreaView>
   );
 };
 
-Categories.propTypes = {
+Search.propTypes = {
   navigation: PropTypes.object,
 };
+
+export default Search;

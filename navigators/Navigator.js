@@ -11,6 +11,7 @@ import {Categories} from '../views/Categories';
 import {AddListing} from '../views/AddListing';
 import {Profile} from '../views/Profile';
 import EditListing from '../views/EditListing';
+import Search from '../views/Search';
 import {History} from '../views/History';
 import {MyListing} from '../views/MyListing';
 
@@ -125,6 +126,16 @@ const StackScreen = () => {
             backgroundColor: 'rgb(0, 0, 0)',
           },
           headerTintColor: 'red',
+        }}
+      />
+      <Stack.Screen
+        name="Search"
+        component={Search}
+        options={{
+          headerShown: false,
+          headerStyle: {
+            backgroundColor: 'rgb(0, 0, 0)',
+          },
         }}
       />
     </Stack.Navigator>

@@ -43,18 +43,30 @@ const styles = StyleSheet.create({
   myCurrentListItemRNETitle: {
     color: 'rgb(255,255,255)',
   },
-  // Categories.js styles
+  // RNEListItems
+  listItemContainer: {
+    backgroundColor: 'rgb(0, 0, 0)',
+    width: 'auto',
+  },
+
+
+// Categories.js styles
   containerCategories: {
     flex: 1,
     paddingTop: Platform.OS === 'android' ? 30 : 0,
     backgroundColor: 'rgb(0,0,0)',
-    alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'top',
   },
   pageTitleContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    marginBottom: 10,
+  },
+  pageTitleView: {
     backgroundColor: 'rgb(255,0,0)',
     padding: 10,
     borderRadius: 10,
+    marginLeft: 10,
     alignSelf: 'flex-start',
   },
   pageTitle: {
@@ -62,10 +74,72 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     alignSelf: 'flex-start',
-    // shadow
     textShadowColor: 'rgba(0, 0, 0, 0.9)',
     textShadowOffset: {width: 3, height: 3},
     textShadowRadius: 3,
+  },
+  searchIconView: {
+    padding: 5,
+    borderRadius: 10,
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    marginRight: 30,
+  },
+  loadingContainer: {
+    marginTop: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  loadingCategories: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  // Search
+  // SearchBar
+  searchResultContainer: {
+    marginTop: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  noResultText: {
+    color: 'rgb(255, 255, 255)',
+    fontSize: 20,
+  },
+  searchContainer: {
+    flexDirection: 'row',
+    width: 'auto',
+  },
+  searchInput: {
+    backgroundColor: 'rgb(255, 255, 255)',
+    color: 'rgb(0,0,0)',
+    fontSize: 24,
+    borderWidth: 1,
+    borderColor: 'rgb(0,0,0)',
+    borderRadius: 3,
+    paddingTop: 3,
+    paddingBottom: 3,
+    paddingLeft: 10,
+    paddingRight: 10,
+    margin: 20,
+    width: '50%',
+  },
+  searchButton: {
+    width: 100,
+    backgroundColor: 'rgb(255,0,0)',
+    color: 'rgb(231,223,223)',
+    textItems: 'center',
+    justifyContent: 'center',
+    paddingLeft: 10,
+    paddingRight: 10,
+    borderRadius: 8,
+    marginTop: 10,
+    marginBottom: 20,
+  },
+  searchButtonText: {
+    textAlign: 'center',
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
   },
   // CategoriesListItem.js
   containerCategoryListItem: {
