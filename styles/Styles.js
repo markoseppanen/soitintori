@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgb(0,0,0)',
   },
+
   // Instruments.js
   containerInstruments: {
     flex: 1,
@@ -42,7 +43,14 @@ const styles = StyleSheet.create({
   myCurrentListItemRNETitle: {
     color: 'rgb(255,255,255)',
   },
-  // Categories.js styles
+  // RNEListItems
+  listItemContainer: {
+    backgroundColor: 'rgb(0, 0, 0)',
+    width: 'auto',
+  },
+
+
+// Categories.js styles
   containerCategories: {
     flex: 1,
     paddingTop: Platform.OS === 'android' ? 30 : 0,
@@ -161,6 +169,7 @@ const styles = StyleSheet.create({
     fontSize: 26,
     backgroundColor: 'rgba(231, 223, 223, 0.2)',
     padding: 5,
+    // shadow
     textShadowColor: 'rgba(255, 255, 255, 0.9)',
     textShadowOffset: {width: 2, height: 2},
     textShadowRadius: 2,
@@ -228,11 +237,6 @@ const styles = StyleSheet.create({
     top: 20,
     right: 20,
     zIndex: 1,
-  },
-  // RNEListItems
-  listItemContainer: {
-    backgroundColor: 'rgb(0, 0, 0)',
-    width: 'auto',
   },
 });
 
