@@ -35,7 +35,7 @@ const LoginForm = () => {
 
   return (
     <Card containerStyle={styles.loginCard}>
-      <Card.Title>Login</Card.Title>
+      <Card.Title style={styles.cardTitle}>Login</Card.Title>
       <Controller
         control={control}
         rules={{

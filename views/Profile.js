@@ -46,7 +46,7 @@ export const Profile = ({navigation}) => {
   return (
     <ScrollView style={styles.containerProfile}>
       <Card containerStyle={styles.cardProfile}>
-        <Card.Title>Profile</Card.Title>
+        <Card.Title style={styles.cardTitle}>Profile</Card.Title>
         <ListItem>
           <Icon name="person" />
           <ListItem.Title>{fullName.full_name}</ListItem.Title>

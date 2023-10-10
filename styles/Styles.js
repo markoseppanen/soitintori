@@ -13,6 +13,10 @@ const styles = StyleSheet.create({
   cardProfile: {
     backgroundColor: 'rgb(255,0,0)',
   },
+  // Card titles
+  cardTitle: {
+    fontSize: 20,
+  },
   // Login.js
   containerLogin: {
     flex: 1,

@@ -46,11 +46,14 @@ const Login = ({navigation}) => {
         )}
         <Card containerStyle={styles.loginCard}>
           {toggleRegister ? (
-            <Card.Title setToggleRegister={setToggleRegister}>
+            <Card.Title
+              style={styles.cardTitle}
+              setToggleRegister={setToggleRegister}
+            >
               Already Registered? Login Here
             </Card.Title>
           ) : (
-            <Card.Title>Register Here!</Card.Title>
+            <Card.Title style={styles.cardTitle}>Register Here!</Card.Title>
           )}
 
           <Button
