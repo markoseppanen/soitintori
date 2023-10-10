@@ -1,4 +1,4 @@
-import React, {useContext, useState} from 'react';
+import React, {useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Card, Icon, Text, ListItem, Button} from '@rneui/themed';
 import {View, SafeAreaView, Alert, TouchableOpacity} from 'react-native';
@@ -7,12 +7,14 @@ import styles from '../styles/Styles';
 import {MainContext} from '../contexts/MainContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useComment} from '../hooks/ApiHooks';
-import ImageModal from './ImageModal';
-import BuyModal from '../components/BuyModal';
+import ImageModal from '../modals/ImageModal';
+import BuyModal from '../modals/BuyModal';
+import SuccessModal from '../modals/SuccessModal';
 
 export const SingleInstrument = ({route, navigation}) => {
   const {user, isLoggedIn} = useContext(MainContext);
   const {commentsArray, postComment} = useComment();
+  const [receiptId, setReceiptId] = useState(null);
   // console.log('USER information: ', user); // user data is null if not logged in
   // console.log('route params: ', route.params);
   const {
@@ -30,6 +32,15 @@ export const SingleInstrument = ({route, navigation}) => {
   const [buyModalVisible, setBuyModalVisible] = useState(false);
   const toggleBuyModal = () => {
     setBuyModalVisible(!buyModalVisible);
+  };
+
+  const [successModalVisible, setSuccessModalVisible] = useState(false);
+  const toggleSuccessModal = () => {
+    setSuccessModalVisible(!successModalVisible);
+  };
+
+  const navigateToCategories = () => {
+    navigation.navigate('Categories');
   };
 
   const goBack = () => {
@@ -68,19 +79,19 @@ export const SingleInstrument = ({route, navigation}) => {
       const token = await AsyncStorage.getItem('userToken');
       const result = await postComment(token, updatedDataJSON);
       console.log('UPDATE COMMENT: ', result.message);
-      setBuyModalVisible(false);
-      Alert.alert('Buy succeeded', `Receipt id: ${result.comment_id}`, [
-        {
-          text: 'Ok',
-          onPress: () => {
-            navigation.navigate('Categories');
-          },
-        },
-      ]);
+
+      // console.log('comment id from:', result.comment_id);
+      setReceiptId(result.comment_id);
     } catch (error) {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    if (receiptId !== null) {
+      toggleSuccessModal();
+    }
+  }, [receiptId]);
 
   return (
     <SafeAreaView style={styles.singleInstrumentContainer}>
@@ -166,6 +177,13 @@ export const SingleInstrument = ({route, navigation}) => {
               isVisible={buyModalVisible}
               onClose={toggleBuyModal}
               onConfirm={handleBuy}
+            />
+            <SuccessModal
+              succeeded={successModalVisible}
+              onClose={() => {
+                navigateToCategories();
+              }}
+              receiptId={receiptId}
             />
           </View>
         </Card>
