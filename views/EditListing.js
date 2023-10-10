@@ -63,8 +63,15 @@ const EditListing = ({navigation, route}) => {
       const token = await AsyncStorage.getItem('userToken');
       const result = await putMedia(fileId, token, updatedDataJSON);
       console.log('updateMedia()', result.message);
-      Alert.alert('Update succeeded', result.message);
       setUpdate(!update);
+      Alert.alert('Update succeeded', result.comment_id, [
+        {
+          text: 'Ok',
+          onPress: () => {
+            navigation.navigate('SingleInstrument');
+          },
+        },
+      ]);
     } catch (error) {
       console.error(error);
     }

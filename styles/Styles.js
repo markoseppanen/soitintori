@@ -125,6 +125,43 @@ const styles = StyleSheet.create({
     right: 20,
     zIndex: 1,
   },
+  // BuyModal
+  buyModalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.4)',
+  },
+  buyModalContent: {
+    backgroundColor: 'rgb(0, 0, 0)',
+    padding: 20,
+    borderRadius: 10,
+    alignItems: 'center',
+    elevation: 5, // Android shadow
+  },
+  buyModalTitle: {
+    width: 180,
+    backgroundColor: 'rgb(255, 0, 0)',
+    borderRadius: 4,
+    color: 'rgb(255, 255, 255)',
+    padding: 4,
+    margin: 4,
+  },
+  buyModalText: {
+    backgroundColor: 'rgb(255, 0, 0)',
+    color: 'rgb(255, 255, 255)',
+    fontWeight: 'bold',
+    fontSize: 20,
+    alignSelf: 'center',
+  },
+  buyModalButton: {
+    width: 100,
+    backgroundColor: 'rgb(255, 0, 0)',
+    borderRadius: 4,
+    color: 'rgb(255, 255, 255)',
+    padding: 4,
+    margin: 4,
+  },
 });
 
 export default styles;

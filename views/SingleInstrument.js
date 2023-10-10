@@ -8,16 +8,13 @@ import {MainContext} from '../contexts/MainContext';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useComment} from '../hooks/ApiHooks';
 import ImageModal from './ImageModal';
+import BuyModal from '../components/BuyModal';
 
 export const SingleInstrument = ({route, navigation}) => {
   const {user, isLoggedIn} = useContext(MainContext);
   const {commentsArray, postComment} = useComment();
   // console.log('USER information: ', user); // user data is null if not logged in
   // console.log('route params: ', route.params);
-  const [isModalVisible, setModalVisible] = useState(false);
-  const toggleModal = () => {
-    setModalVisible(!isModalVisible);
-  };
   const {
     description,
     thumbnails,
@@ -25,13 +22,22 @@ export const SingleInstrument = ({route, navigation}) => {
     file_id: fileId,
     user_id,
   } = route.params;
+  // State variables for modals
+  const [imageModalVisible, setImageModalVisible] = useState(false);
+  const toggleImageModal = () => {
+    setImageModalVisible(!imageModalVisible);
+  };
+  const [buyModalVisible, setBuyModalVisible] = useState(false);
+  const toggleBuyModal = () => {
+    setBuyModalVisible(!buyModalVisible);
+  };
 
   const goBack = () => {
     navigation.goBack();
   };
 
   const modifyListing = async () => {
-    console.log('modifying file', fileId);
+    // console.log('modifying file', fileId);
     navigation.navigate('Edit Listing', route);
   };
 
@@ -62,6 +68,7 @@ export const SingleInstrument = ({route, navigation}) => {
       const token = await AsyncStorage.getItem('userToken');
       const result = await postComment(token, updatedDataJSON);
       console.log('UPDATE COMMENT: ', result.message);
+      setBuyModalVisible(false);
       Alert.alert('Buy succeeded', `Receipt id: ${result.comment_id}`, [
         {
           text: 'Ok',
@@ -87,7 +94,7 @@ export const SingleInstrument = ({route, navigation}) => {
           }}
         >
           <View style={styles.singleInstrumentCardTop}>
-            <TouchableOpacity onPress={toggleModal}>
+            <TouchableOpacity onPress={toggleImageModal}>
               <Card.Image
                 source={{uri: mediaUrl + thumbnails.w640}}
                 resizeMode="cover"
@@ -102,9 +109,9 @@ export const SingleInstrument = ({route, navigation}) => {
             </TouchableOpacity>
 
             <ImageModal
-              visible={isModalVisible}
+              visible={imageModalVisible}
               imageUrl={mediaUrl + filename}
-              onClose={toggleModal}
+              onClose={toggleImageModal}
             />
           </View>
           <View style={styles.singleInstrumentCardBottom}>
@@ -146,13 +153,20 @@ export const SingleInstrument = ({route, navigation}) => {
               />
             ) : isLoggedIn ? (
               <Button
-                onPress={handleBuy}
+                onPress={toggleBuyModal}
                 title="Buy"
                 titleStyle={{color: 'white'}}
                 buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
                 containerStyle={{marginTop: 10}}
               />
             ) : null}
+          </View>
+          <View>
+            <BuyModal
+              isVisible={buyModalVisible}
+              onClose={toggleBuyModal}
+              onConfirm={handleBuy}
+            />
           </View>
         </Card>
       </View>
