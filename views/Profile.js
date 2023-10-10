@@ -68,19 +68,27 @@ export const Profile = ({navigation}) => {
           <ListItem.Title>{user.email}</ListItem.Title>
         </ListItem>
         <Card.Divider />
-        <Button size="sm" onPress={logOut}>
+        <Button size="sm" buttonStyle={{backgroundColor: 'black', borderRadius: 20}} onPress={logOut}>
           Log out!
-          <Icon name="logout"></Icon>
+          <Icon name="logout" color='white'></Icon>
         </Button>
       </Card>
       <Card containerStyle={styles.cardProfile}>
-        <Button size="sm" onPress={myListing}>
+        <Button
+          size="sm"
+          buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+          onPress={myListing}
+        >
           Current Listing
         </Button>
         <Text></Text>
-        <Button size="sm" onPress={toHistory}>
+        <Button
+          size="sm"
+          buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+          onPress={toHistory}
+        >
           History
-          <Icon name="history"></Icon>
+          <Icon name="history" color='white'></Icon>
         </Button>
       </Card>
       <Card containerStyle={styles.cardProfile}>
