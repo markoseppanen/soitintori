@@ -74,6 +74,7 @@ const RegisterForm = ({setToggleRegister}) => {
             onChangeText={onChange}
             value={value}
             autoCapitalize="none"
+            placeholderTextColor={'white'}
             errorMessage={errors.username?.message}
           />
         )}
@@ -92,6 +93,7 @@ const RegisterForm = ({setToggleRegister}) => {
             onChangeText={onChange}
             value={value}
             autoCapitalize="none"
+            placeholderTextColor={'white'}
             errorMessage={errors.email?.message}
           />
         )}
@@ -111,6 +113,7 @@ const RegisterForm = ({setToggleRegister}) => {
             onChangeText={onChange}
             value={value}
             autoCapitalize="none"
+            placeholderTextColor={'white'}
             errorMessage={errors.full_name?.message}
           />
         )}
@@ -129,6 +132,7 @@ const RegisterForm = ({setToggleRegister}) => {
             onChangeText={onChange}
             value={value}
             autoCapitalize="none"
+            placeholderTextColor={'white'}
             errorMessage={errors.address?.message}
           />
         )}
@@ -147,6 +151,7 @@ const RegisterForm = ({setToggleRegister}) => {
             onChangeText={onChange}
             value={value}
             autoCapitalize="none"
+            placeholderTextColor={'white'}
             errorMessage={errors.postal_code?.message}
           />
         )}
@@ -166,6 +171,7 @@ const RegisterForm = ({setToggleRegister}) => {
             onChangeText={onChange}
             value={value}
             autoCapitalize="none"
+            placeholderTextColor={'white'}
             errorMessage={errors.phonenumber?.message}
           />
         )}
@@ -185,6 +191,7 @@ const RegisterForm = ({setToggleRegister}) => {
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
+            placeholderTextColor={'white'}
             errorMessage={errors.password?.message}
           />
         )}
@@ -207,13 +214,18 @@ const RegisterForm = ({setToggleRegister}) => {
             onBlur={onBlur}
             onChangeText={onChange}
             value={value}
+            placeholderTextColor={'white'}
             errorMessage={errors.confirm_password?.message}
           />
         )}
         name="confirm_password"
       />
 
-      <Button title="Submit" onPress={handleSubmit(register)} />
+      <Button
+        buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+        title="Submit"
+        onPress={handleSubmit(register)}
+      />
     </Card>
   );
 };
