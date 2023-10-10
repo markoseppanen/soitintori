@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 'auto',
   },
-// Categories.js styles
+  // Categories.js styles
   containerCategories: {
     flex: 1,
     paddingTop: Platform.OS === 'android' ? 30 : 0,
@@ -326,6 +326,12 @@ const styles = StyleSheet.create({
     color: 'rgb(255, 255, 255)',
     padding: 4,
     margin: 20,
+  },
+  editModal: {
+    width: '95%',
+    height: '75%',
+    alignSelf: 'center',
+    marginTop: '12%',
   },
 });
 
