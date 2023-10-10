@@ -49,6 +49,7 @@ const LoginForm = () => {
             value={value}
             autoCapitalize="none"
             textAlign="center"
+            placeholderTextColor={'white'}
             errorMessage={errors.username?.message}
           />
         )}
@@ -69,6 +70,7 @@ const LoginForm = () => {
             onChangeText={onChange}
             value={value}
             textAlign="center"
+            placeholderTextColor={'white'}
             errorMessage={errors.password?.message}
           />
         )}
