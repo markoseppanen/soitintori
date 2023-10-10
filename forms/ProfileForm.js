@@ -66,7 +66,7 @@ const ProfileForm = ({user}) => {
 
   return (
     <Card>
-      <Card.Title>Update Profile</Card.Title>
+      <Card.Title style={styles.cardTitle}>Update Profile</Card.Title>
       <Controller
         control={control}
         rules={{
@@ -151,36 +151,6 @@ const ProfileForm = ({user}) => {
           />
         )}
         name="postal_code"
-      />
-      <Controller
-        control={control}
-        rules={{
-          required: {value: true, message: 'is required'},
-          minLength: {value: 3, message: 'min length is 3 characters'},
-          validate: async (value) => {
-            try {
-              if (value.length < 3) {
-                return;
-              }
-              const isAvailable = await checkUsername(value);
-              console.log('username available?', value, isAvailable);
-              return isAvailable ? isAvailable : 'Username taken';
-            } catch (error) {
-              console.error(error);
-            }
-          },
-        }}
-        render={({field: {onChange, onBlur, value}}) => (
-          <Input
-            placeholder="Username"
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-            autoCapitalize="none"
-            errorMessage={errors.username?.message}
-          />
-        )}
-        name="username"
       />
       <Controller
         control={control}

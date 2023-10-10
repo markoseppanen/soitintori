@@ -52,7 +52,7 @@ const RegisterForm = ({setToggleRegister}) => {
 
   return (
     <Card containerStyle={styles.loginCard}>
-      <Card.Title>Register</Card.Title>
+      <Card.Title style={styles.cardTitle}>Register</Card.Title>
       <Controller
         control={control}
         rules={{
