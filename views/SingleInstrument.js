@@ -1,7 +1,13 @@
 import React, {useContext, useState, useEffect} from 'react';
 import PropTypes from 'prop-types';
 import {Card, Icon, Text, ListItem, Button} from '@rneui/themed';
-import {View, SafeAreaView, Alert, TouchableOpacity} from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  Alert,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import {mediaUrl} from '../utils/app-config';
 import styles from '../styles/Styles';
 import {MainContext} from '../contexts/MainContext';
@@ -95,99 +101,110 @@ export const SingleInstrument = ({route, navigation}) => {
 
   return (
     <SafeAreaView style={styles.singleInstrumentContainer}>
-      <View style={styles.singleInstrumentContainer}>
-        <Card
-          containerStyle={{
-            margin: 10,
-            backgroundColor: 'rgb(231,223,223)',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-        >
-          <View style={styles.singleInstrumentCardTop}>
-            <TouchableOpacity onPress={toggleImageModal}>
-              <Card.Image
-                source={{uri: mediaUrl + thumbnails.w640}}
-                resizeMode="cover"
-                style={{
-                  width: 150,
-                  height: 200,
-                  borderWidth: 1,
-                  borderRadius: 30,
-                  alignContent: 'stretch',
-                }}
-              />
-            </TouchableOpacity>
+      <ScrollView>
+        <View style={styles.singleInstrumentContainer}>
+          <Card
+            containerStyle={{
+              margin: 10,
+              borderRadius: 10,
+              borderWidth: 0.5,
+              borderColor: 'rgb(255, 255, 255)',
+              backgroundColor: 'rgb(0,0,0)',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}
+          >
+            <View style={styles.singleInstrumentCardTop}>
+              <TouchableOpacity onPress={toggleImageModal}>
+                <Card.Image
+                  source={{uri: mediaUrl + thumbnails.w640}}
+                  resizeMode="cover"
+                  style={{
+                    width: 220,
+                    height: 180,
+                    borderWidth: 1,
+                    borderRadius: 10,
+                    alignContent: 'stretch',
+                  }}
+                />
+              </TouchableOpacity>
 
-            <ImageModal
-              visible={imageModalVisible}
-              imageUrl={mediaUrl + filename}
-              onClose={toggleImageModal}
-            />
-          </View>
-          <View style={styles.singleInstrumentCardBottom}>
-            <ListItem containerStyle={{backgroundColor: 'rgb(151,121,115)'}}>
-              <Text style={styles.singleInstrumentItemText}>
-                {description.description}, {description.price} €
-              </Text>
-            </ListItem>
-            <ListItem containerStyle={{backgroundColor: 'rgb(151,121,115)'}}>
-              <Icon name="place" color="#fff" />
-              <Text style={styles.singleInstrumentItemText}>
-                {description.address}
-              </Text>
-            </ListItem>
-            <ListItem containerStyle={{backgroundColor: 'rgb(151,121,115)'}}>
-              <Icon name="phone" color="#fff" />
-              <Text style={styles.singleInstrumentItemText}>
-                {description.seller_phonenumber}
-              </Text>
-            </ListItem>
-          </View>
-          <View style={styles.singleInstrumentButtonContainer}>
-            <Button
-              title="Go Back"
-              titleStyle={{color: 'white'}}
-              buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
-              onPress={() => {
-                goBack();
-              }}
-              containerStyle={{marginTop: 10}}
-            />
-            {isLoggedIn && user.user_id === user_id ? (
+              <ImageModal
+                visible={imageModalVisible}
+                imageUrl={mediaUrl + filename}
+                onClose={toggleImageModal}
+              />
+            </View>
+            <View style={styles.singleInstrumentCardBottom}>
+              <ListItem containerStyle={styles.listItemContainer}>
+                <Text style={styles.singleInstrumentItemText}>
+                  {description.description}
+                </Text>
+              </ListItem>
+              <ListItem containerStyle={styles.listItemContainer}>
+                <Text style={styles.singleInstrumentItemText}>
+                  {' '}
+                  € {'   '} {description.price}
+                </Text>
+              </ListItem>
+              <ListItem containerStyle={styles.listItemContainer}>
+                <Icon name="place" color="#fff" />
+                <Text style={styles.singleInstrumentItemText}>
+                  {description.address}
+                </Text>
+              </ListItem>
+              <ListItem containerStyle={styles.listItemContainer}>
+                <Icon name="phone" color="#fff" />
+                <Text style={styles.singleInstrumentItemText}>
+                  {description.seller_phonenumber}
+                </Text>
+              </ListItem>
+            </View>
+            <View style={styles.singleInstrumentButtonContainer}>
               <Button
-                onPress={modifyListing}
-                title="Modify"
+                title="Go Back"
                 titleStyle={{color: 'white'}}
-                buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+                buttonStyle={{backgroundColor: 'red', borderRadius: 4}}
+                onPress={() => {
+                  goBack();
+                }}
                 containerStyle={{marginTop: 10}}
               />
-            ) : isLoggedIn ? (
-              <Button
-                onPress={toggleBuyModal}
-                title="Buy"
-                titleStyle={{color: 'white'}}
-                buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
-                containerStyle={{marginTop: 10}}
+              {isLoggedIn && user.user_id === user_id ? (
+                <Button
+                  onPress={modifyListing}
+                  title="Modify"
+                  titleStyle={{color: 'white'}}
+                  buttonStyle={{backgroundColor: 'red', borderRadius: 4}}
+                  containerStyle={{marginTop: 10}}
+                />
+              ) : isLoggedIn ? (
+                <Button
+                  onPress={toggleBuyModal}
+                  title="Buy"
+                  titleStyle={{color: 'white'}}
+                  buttonStyle={{backgroundColor: 'red', borderRadius: 4}}
+                  containerStyle={{marginTop: 10}}
+                />
+              ) : null}
+            </View>
+            <View>
+              <BuyModal
+                isVisible={buyModalVisible}
+                onClose={toggleBuyModal}
+                onConfirm={handleBuy}
               />
-            ) : null}
-          </View>
-          <View>
-            <BuyModal
-              isVisible={buyModalVisible}
-              onClose={toggleBuyModal}
-              onConfirm={handleBuy}
-            />
-            <SuccessModal
-              succeeded={successModalVisible}
-              onClose={() => {
-                navigateToCategories();
-              }}
-              receiptId={receiptId}
-            />
-          </View>
-        </Card>
-      </View>
+              <SuccessModal
+                succeeded={successModalVisible}
+                onClose={() => {
+                  navigateToCategories();
+                }}
+                receiptId={receiptId}
+              />
+            </View>
+          </Card>
+        </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
