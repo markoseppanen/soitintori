@@ -46,10 +46,9 @@ const styles = StyleSheet.create({
   // RNEListItems
   listItemContainer: {
     backgroundColor: 'rgb(0, 0, 0)',
+    padding: 10,
     width: 'auto',
   },
-
-
 // Categories.js styles
   containerCategories: {
     flex: 1,
@@ -181,14 +180,15 @@ const styles = StyleSheet.create({
   },
   singleInstrumentCard: {},
   singleInstrumentCardTop: {
-    backgroundColor: 'rgb(231,223,223)',
+    backgroundColor: 'rgb(0,0,0)',
     padding: 5,
+    borderRadius: 20,
     margin: 0,
     alignItems: 'center',
     justifyContent: 'center',
   },
   singleInstrumentCardBottom: {
-    backgroundColor: 'rgb(151,121,115)',
+    backgroundColor: 'rgb(0,0,0)',
     borderWidth: 1,
     padding: 20,
     borderRadius: 20,
@@ -201,7 +201,6 @@ const styles = StyleSheet.create({
   },
   singleInstrumentButtonContainer: {
     flexDirection: 'row',
-    marginTop: 20,
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
@@ -221,12 +220,15 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     resizeMode: 'cover',
   },
-  // ImageModal
+  // Modals
   modalContainer: {
     flex: 1,
     backgroundColor: 'black',
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  modalImageContainer: {
+    borderRadius: 10,
   },
   modalImage: {
     width: '80%',
@@ -237,6 +239,89 @@ const styles = StyleSheet.create({
     top: 20,
     right: 20,
     zIndex: 1,
+  },
+  buyModalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+  },
+  buyModalContent: {
+    backgroundColor: 'rgb(0, 0, 0)',
+    padding: 20,
+    borderRadius: 10,
+    borderWidth: 0.5,
+    borderColor: 'rgb(255, 255, 255)',
+    alignItems: 'center',
+    elevation: 5,
+  },
+  buyModalTitle: {
+    width: 200,
+    backgroundColor: 'rgb(0, 0, 0)',
+    borderRadius: 4,
+    borderWidth: 1,
+    color: 'rgb(255, 255, 255)',
+    padding: 4,
+    margin: 4,
+  },
+  buyModalText: {
+    color: 'rgb(255, 255, 255)',
+    fontWeight: 'bold',
+    fontSize: 18,
+    alignSelf: 'center',
+  },
+  buyModalButton: {
+    width: 100,
+    backgroundColor: 'rgb(255, 0, 0)',
+    borderRadius: 4,
+    borderWidth: 1,
+    color: 'rgb(255, 255, 255)',
+    padding: 4,
+    margin: 4,
+  },
+  successModalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+  },
+  successModalContent: {
+    backgroundColor: 'rgb(0, 0, 0)',
+    padding: 20,
+    borderRadius: 10,
+    borderWidth: 0.5,
+    borderColor: 'rgb(255, 255, 255)',
+    alignItems: 'center',
+    elevation: 5,
+  },
+  successModalTitleContainer: {
+    width: 200,
+    backgroundColor: 'rgb(0, 0, 0)',
+    borderRadius: 4,
+    borderWidth: 1,
+    color: 'rgb(255, 255, 255)',
+    padding: 4,
+    margin: 4,
+  },
+  successModalTitle: {
+    color: 'rgb(255, 255, 255)',
+    fontWeight: 'bold',
+    fontSize: 18,
+    alignSelf: 'center',
+  },
+  successModalText: {
+    color: 'rgb(255, 255, 255)',
+    fontSize: 18,
+    alignSelf: 'center',
+  },
+  successModalButton: {
+    width: 100,
+    backgroundColor: 'rgb(255, 0, 0)',
+    borderRadius: 4,
+    borderWidth: 1,
+    color: 'rgb(255, 255, 255)',
+    padding: 4,
+    margin: 20,
   },
 });
 
