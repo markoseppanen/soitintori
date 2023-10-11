@@ -1,4 +1,4 @@
-import {FlatList} from 'react-native';
+import {FlatList, ScrollView, View} from 'react-native';
 import {useMedia, useComment} from '../hooks/ApiHooks';
 import SoldListItem from './SoldListItem';
 import PropTypes from 'prop-types';
@@ -6,6 +6,7 @@ import {Text} from '@rneui/themed';
 import {useContext, useEffect, useState} from 'react';
 import {MainContext} from '../contexts/MainContext';
 import {createInstrumentArray} from '../utils/functions.js';
+import styles from '../styles/Styles';
 
 const SoldList = ({navigation}) => {
   const {update} = useContext(MainContext);
@@ -69,21 +70,34 @@ const SoldList = ({navigation}) => {
   });
 
   if (combinedData.length === 0) {
-    return <Text>Nothing to show yet</Text>;
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>Loading...</Text>
+        <Text style={styles.loadingText}></Text>
+        <Text style={styles.loadingText}>Nothing to show yet.</Text>
+      </View>
+    );
   }
 
   return (
-    <FlatList
-      data={combinedData}
-      numColumns={1}
-      renderItem={({item}) => (
-        <SoldListItem
-          navigation={navigation}
-          singleSoldItem={item.soldItem}
-          salesData={item.associatedComment}
-        />
-      )}
-    />
+    <View>
+      <View style={styles.pageTitleContainer}>
+        <View style={styles.pageSubTitleView}>
+          <Text style={styles.pageTitle}>Sold History</Text>
+        </View>
+      </View>
+      <FlatList
+        data={combinedData}
+        numColumns={1}
+        renderItem={({item}) => (
+          <SoldListItem
+            navigation={navigation}
+            singleSoldItem={item.soldItem}
+            salesData={item.associatedComment}
+          />
+        )}
+      />
+    </View>
   );
 };
 

@@ -1,4 +1,4 @@
-import {FlatList} from 'react-native';
+import {FlatList, View, ScrollView} from 'react-native';
 import {useMedia, useComment} from '../hooks/ApiHooks';
 import PurchaseListItem from './PurchaseListItem';
 import PropTypes from 'prop-types';
@@ -7,6 +7,7 @@ import {useContext, useEffect, useState} from 'react';
 import {MainContext} from '../contexts/MainContext';
 import {createInstrumentArray} from '../utils/functions.js';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import styles from '../styles/Styles';
 
 const PurchaseList = ({navigation}) => {
   const {update} = useContext(MainContext);
@@ -70,21 +71,34 @@ const PurchaseList = ({navigation}) => {
   // console.log('combinedData ',combinedData);
 
   if (purchasedFilesByCurrentUser.length === 0) {
-    return <Text>Nothing to show yet</Text>;
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>Loading...</Text>
+        <Text style={styles.loadingText}></Text>
+        <Text style={styles.loadingText}>Nothing to show yet.</Text>
+      </View>
+    );
   }
 
   return (
-    <FlatList
-      data={combinedData}
-      numColumns={1}
-      renderItem={({item}) => (
-        <PurchaseListItem
-          navigation={navigation}
-          singlePurchasedItem={item.purchasedItem}
-          purchaseData={item.associatedComment}
-        />
-      )}
-    />
+    <View>
+      <View style={styles.pageTitleContainer}>
+        <View style={styles.pageSubTitleView}>
+          <Text style={styles.pageTitle}>Purchase History</Text>
+        </View>
+      </View>
+      <FlatList
+        data={combinedData}
+        numColumns={1}
+        renderItem={({item}) => (
+          <PurchaseListItem
+            navigation={navigation}
+            singlePurchasedItem={item.purchasedItem}
+            purchaseData={item.associatedComment}
+          />
+        )}
+      />
+    </View>
   );
 };
 
