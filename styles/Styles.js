@@ -66,6 +66,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(0,0,0)',
     justifyContent: 'top',
   },
+  contentContainer: {
+    backgroundColor: 'rgb(0,0,0)',
+    justifyContent: 'top',
+    alignItems: 'center',
+  },
   pageTitleContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -75,7 +80,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(255,0,0)',
     padding: 10,
     borderRadius: 10,
-    marginLeft: 10,
+    marginLeft: 20,
     alignSelf: 'flex-start',
   },
   pageSubTitleView: {
