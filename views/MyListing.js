@@ -7,13 +7,17 @@ import MyCurrentList from '../components/MyCurrentList';
 
 export const MyListing = ({navigation}) => {
   return (
-    <SafeAreaView style={styles.containerCategories}>
-      <View style={styles.pageTitleContainer}>
-        <View style={styles.pageSubTitleView}>
-          <Text style={styles.pageSubTitle}>User's current announcements</Text>
+    <SafeAreaView style={styles.containerHistory}>
+      <View style={styles.historyContentContainer}>
+        <View style={styles.pageTitleContainer}>
+          <View style={styles.pageSubTitleView}>
+            <Text style={styles.pageSubTitle}>
+              User's current announcements
+            </Text>
+          </View>
         </View>
+        <MyCurrentList navigation={navigation} />
       </View>
-      <MyCurrentList navigation={navigation} />
     </SafeAreaView>
   );
 };
