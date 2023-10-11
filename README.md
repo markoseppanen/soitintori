@@ -20,11 +20,11 @@ To be able to buy items or add listings you need to login or register in case yo
 You can use the app without logging in and search for instruments announcements.
 
 ## Screenshots
-![Categories.png](../../../../../../soitintori/screenshots/Categories.png)
-![InstrumentList.png](../screenshots/InstrumentList.png)
-![Login.png](..\screenshots\Login.png)
-![Profile.png](C:\Users\rikun\OneDrive\Tiedostot\GitHub\soitintori\screenshots\Profile.png)
-![SingleInstrument.png](../screenshots/SingleInstrument.png)
-![ConfirmBuy.png](https://via.placeholder.com/468x300?text=ConfirmBuy.png)
-![History.png](../screenshots/History.png)
+![Categories.png](https://via.placeholder.com/468x300?text=)
+![InstrumentList.png](https://via.placeholder.com/468x300?text=InstrumentList.png)
+![Login.png](https://via.placeholder.com/468x300?text=Login.png)
+![Profile.png](https://via.placeholder.com/468x300?text=Profile.png)
+![SingleInstrument.png](https://via.placeholder.com/468x300?text=SingleInstrument.png)
+![../screenshot/ConfirmBuy.png](https://via.placeholder.com/468x300?text=ConfirmBuy.png)
+![History.png](https://via.placeholder.com/468x300?text=History.png)
 
