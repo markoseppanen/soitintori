@@ -21,10 +21,10 @@ You can use the app without logging in and search for instruments announcements.
 
 ## Screenshots
 ![Categories.png](https://github.com/markoseppanen/soitintori/blob/styleFix/screenshots/Categories.png)
-![InstrumentList.png](https://via.placeholder.com/468x300?text=InstrumentList.png)
-![Login.png](https://via.placeholder.com/468x300?text=Login.png)
-![Profile.png](https://via.placeholder.com/468x300?text=Profile.png)
-![SingleInstrument.png](https://via.placeholder.com/468x300?text=SingleInstrument.png)
-![ConfirmBuy.png](https://via.placeholder.com/468x300?text=ConfirmBuy.png)
-![History.png](https://via.placeholder.com/468x300?text=History.png)
+![InstrumentList.png](https://github.com/markoseppanen/soitintori/blob/styleFix/screenshots/InstrumentList.png)
+![Login.png](https://github.com/markoseppanen/soitintori/blob/styleFix/screenshots/Login.png)
+![Profile.png](https://github.com/markoseppanen/soitintori/blob/styleFix/screenshots/Profile.png)
+![SingleInstrument.png](https://github.com/markoseppanen/soitintori/blob/styleFix/screenshots/SingleInstrument.png)
+![ConfirmBuy.png](https://github.com/markoseppanen/soitintori/blob/styleFix/screenshots/ConfirmBuy.png)
+![History.png](https://github.com/markoseppanen/soitintori/blob/styleFix/screenshots/History.png)
 
