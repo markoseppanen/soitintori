@@ -28,3 +28,7 @@ You can use the app without logging in and search for instruments announcements.
 ![ConfirmBuy.png](https://github.com/markoseppanen/soitintori/blob/styleFix/screenshots/ConfirmBuy.png)   <br>
 ![History.png](https://github.com/markoseppanen/soitintori/blob/styleFix/screenshots/History.png)   <br>
 
+# Creators
+Olli Kuokka
+Riku Nokelainen
+Marko Seppänen

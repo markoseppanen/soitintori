@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: Platform.OS === 'android' ? 30 : 0,
     backgroundColor: 'rgb(0,0,0)',
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
   },
   // MyCurrentListItem
@@ -82,6 +82,32 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     marginLeft: 20,
     alignSelf: 'flex-start',
+  },
+  containerinstrumentList: {
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    // Add any other styles you need
+  },
+  instrumentTitleContainer: {
+    alignItems: 'left',
+    justifyContent: 'top',
+  },
+  instrumentListTitleView: {
+    backgroundColor: 'rgb(255,0,0)',
+    padding: 10,
+    borderRadius: 10,
+    marginLeft: 20,
+    alignSelf: 'flex-start',
+  },
+  instrumentPageTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: 'white',
+    alignSelf: 'flex-start',
+    textShadowColor: 'rgba(0, 0, 0, 0.9)',
+    textShadowOffset: {width: 3, height: 3},
+    textShadowRadius: 3,
   },
   pageSubTitleView: {
     padding: 10,
