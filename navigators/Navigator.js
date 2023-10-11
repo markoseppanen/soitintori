@@ -28,10 +28,10 @@ const TabScreen = () => {
         tabBarActiveBackgroundColor: 'rgb(0, 0, 0)',
         tabBarInactiveBackgroundColor: 'rgb(0, 0, 0)',
         tabBarStyle: {
-          height: 65,
+          height: 70,
           backgroundColor: 'rgb(0, 0, 0)',
           borderTopColor: 'rgb(255, 255, 255)',
-          paddingBottom: 10,
+          paddingBottom: 8,
         },
         tabBarLabelStyle: {
           fontSize: 16,
@@ -71,6 +71,7 @@ const TabScreen = () => {
           name="Login"
           component={Login}
           options={{
+            headerShown: false,
             tabBarIcon: ({color}) => <Icon name="person" color={color} />,
           }}
         />
@@ -101,7 +102,7 @@ const StackScreen = () => {
           headerStyle: {
             backgroundColor: 'rgb(0, 0, 0)',
           },
-          headerTintColor: 'red',
+          headerTintColor: 'rgb(255, 255, 255)',
         }}
       />
       <Stack.Screen
@@ -113,7 +114,7 @@ const StackScreen = () => {
           headerStyle: {
             backgroundColor: 'rgb(0, 0, 0)',
           },
-          headerTintColor: 'red',
+          headerTintColor: 'rgb(255, 255, 255)',
         }}
       />
       <Stack.Screen
@@ -125,7 +126,7 @@ const StackScreen = () => {
           headerStyle: {
             backgroundColor: 'rgb(0, 0, 0)',
           },
-          headerTintColor: 'red',
+          headerTintColor: 'rgb(255, 255, 255)',
         }}
       />
       <Stack.Screen
@@ -148,7 +149,12 @@ const StackScreen2 = () => {
       <Stack.Screen
         name="AddListing"
         component={AddListing}
-        options={{headerShown: false}}
+        options={{
+          headerShown: false,
+          headerStyle: {
+            backgroundColor: 'rgb(0, 0, 0)',
+          },
+        }}
       />
     </Stack.Navigator>
   );
@@ -171,19 +177,20 @@ const StackScreen3 = () => {
           headerStyle: {
             backgroundColor: 'rgb(0, 0, 0)',
           },
-          headerTintColor: 'red',
+          headerTintColor: 'rgb(255, 255, 255)',
         }}
       />
       <Stack.Screen
         name="Current Listing"
         component={MyListing}
         options={{
+          headerShown: false,
           title: '',
           headerBackTitle: 'Back',
           headerStyle: {
             backgroundColor: 'rgb(0, 0, 0)',
           },
-          headerTintColor: 'red',
+          headerTintColor: 'rgb(255, 255, 255)',
         }}
       />
     </Stack.Navigator>

@@ -1,4 +1,4 @@
-import {FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 import {useMedia, useComment} from '../hooks/ApiHooks';
 import InstrumentListItem from './InstrumentListItem';
 import PropTypes from 'prop-types';
@@ -6,6 +6,7 @@ import {Text} from '@rneui/themed';
 import {useContext, useEffect, useState} from 'react';
 import {MainContext} from '../contexts/MainContext';
 import {createInstrumentArray} from '../utils/functions.js';
+import styles from '../styles/Styles';
 
 const InstrumentList = ({navigation, categoryTitle}) => {
   const {update} = useContext(MainContext);
@@ -66,7 +67,13 @@ const InstrumentList = ({navigation, categoryTitle}) => {
   });
 
   if (filteredInstrumentArray.length === 0) {
-    return <Text>Nothing to show yet</Text>;
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>Loading instruments...</Text>
+        <Text style={styles.loadingText}></Text>
+        <Text style={styles.loadingText}>Nothing to show yet.</Text>
+      </View>
+    );
   }
 
   return (

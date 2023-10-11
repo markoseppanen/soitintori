@@ -17,7 +17,7 @@ const CategoryList = ({navigation}) => {
   if (!sortedCategoryArray || sortedCategoryArray.length === 0) {
     return (
       <View style={styles.loadingContainer}>
-        <Text style={styles.loadingContainer}>Loading categories ...</Text>
+        <Text style={styles.loadingText}>Loading categories ...</Text>
       </View>
     );
   }

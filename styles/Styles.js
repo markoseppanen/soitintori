@@ -53,6 +53,9 @@ const styles = StyleSheet.create({
     padding: 10,
     width: 'auto',
   },
+  rneListItemText: {
+    color: 'rgb(255,255,255)',
+  },
   // Categories.js styles
   containerCategories: {
     flex: 1,
@@ -72,8 +75,14 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     alignSelf: 'flex-start',
   },
+  pageSubTitleView: {
+    padding: 10,
+    borderRadius: 10,
+    marginLeft: 10,
+    alignSelf: 'flex-start',
+  },
   pageTitle: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: 'bold',
     color: 'white',
     alignSelf: 'flex-start',
@@ -92,10 +101,11 @@ const styles = StyleSheet.create({
     marginTop: 50,
     alignItems: 'center',
     justifyContent: 'center',
+    margin: 50,
   },
-  loadingCategories: {
-    fontSize: 20,
-    fontWeight: 'bold',
+  loadingText: {
+    color: 'rgb(255,255,255)',
+    fontSize: 16,
   },
   // Search
   // SearchBar
@@ -248,7 +258,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
   },
   buyModalContent: {
     backgroundColor: 'rgb(0, 0, 0)',
@@ -287,7 +297,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.6)',
+    backgroundColor: 'rgba(255, 255, 255, 0.9)',
   },
   successModalContent: {
     backgroundColor: 'rgb(0, 0, 0)',
@@ -338,6 +348,105 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
+  },
+  receiptModalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.8)',
+  },
+  receiptModalContent: {
+    backgroundColor: 'rgb(0, 0, 0)',
+    padding: 20,
+    borderRadius: 10,
+    borderWidth: 0.5,
+    borderColor: 'rgb(255, 255, 255)',
+    alignItems: 'center',
+    elevation: 5,
+  },
+  receiptModalTitleContainer: {
+    width: 200,
+    backgroundColor: 'rgb(0, 0, 0)',
+    borderRadius: 4,
+    borderWidth: 1,
+    color: 'rgb(255, 255, 255)',
+    padding: 4,
+    margin: 4,
+  },
+  receiptModalTitle: {
+    color: 'rgb(255, 255, 255)',
+    fontWeight: 'bold',
+    fontSize: 18,
+    marginTop: 10,
+    alignSelf: 'flex-start',
+  },
+  receiptDataContainer: {
+    flexDirection: 'row',
+  },
+  receiptModalText: {
+    color: 'rgb(255, 255, 255)',
+    fontSize: 14,
+    margin: 4,
+    alignSelf: 'flex-start',
+  },
+  receiptModalValue: {
+    color: 'rgb(255, 255, 255)',
+    fontSize: 14,
+    margin: 4,
+    alignSelf: 'flex-end',
+  },
+  receiptModalButton: {
+    width: 100,
+    backgroundColor: 'rgb(255, 0, 0)',
+    borderRadius: 4,
+    borderWidth: 1,
+    color: 'rgb(255, 255, 255)',
+    padding: 4,
+    margin: 20,
+  },
+  receiptModalButtonText: {
+    color: 'rgb(255, 255, 255)',
+    fontSize: 16,
+    alignSelf: 'center',
+  },
+  receiptModalInfoContainer: {
+    backgroundColor: 'rgb(0, 0, 0)',
+    padding: 20,
+    borderRadius: 10,
+    borderWidth: 0.5,
+    borderColor: 'rgb(255, 255, 255)',
+    alignItems: 'center',
+    elevation: 5,
+  },
+  receiptModalImage: {
+    width: 100,
+    height: 100,
+    marginTop: 5,
+    alignSelf: 'flex-start',
+  },
+  // History.js tabs
+  tabsContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: 'rgb(0, 0, 0)',
+    borderColor: 'rgb(255, 255, 255)',
+    // borderWidth: 1,
+  },
+  tabButton: {
+    width: '48%',
+    paddingVertical: 10,
+    alignItems: 'center',
+  },
+  selectedTab: {
+    backgroundColor: 'rgb(255, 0, 0)',
+  },
+  tabButtonText: {
+    fontSize: 18,
+    color: 'white',
+  },
+  selectedTabText: {
+    color: 'white',
   },
 });
 

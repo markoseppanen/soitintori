@@ -1,6 +1,6 @@
-import {Card, Input, Button} from '@rneui/themed';
+import {Card, Input, Button, Text} from '@rneui/themed';
 import {Controller, useForm} from 'react-hook-form';
-import {Alert, ScrollView} from 'react-native';
+import {Alert, ScrollView, View} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import * as ImagePicker from 'expo-image-picker';
 import {useContext, useState} from 'react';
@@ -116,6 +116,11 @@ export const AddListing = ({navigation}) => {
 
   return (
     <ScrollView style={styles.containerAddListing}>
+      <View style={styles.pageTitleContainer}>
+        <View style={styles.pageTitleView}>
+          <Text style={styles.pageTitle}>Add Listing</Text>
+        </View>
+      </View>
       <Card>
         <Card.Image
           source={{uri: image}}
