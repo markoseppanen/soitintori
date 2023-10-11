@@ -10,7 +10,19 @@ import styles from '../styles/Styles';
 export const Profile = ({navigation}) => {
   const {setIsLoggedIn, user} = useContext(MainContext);
 
-  const fullName = JSON.parse(user.full_name);
+  let fullName = user.full_name;
+  const fullNameParser = () => {
+    try {
+      if (fullName === undefined) {
+        fullName = {full_name: '', phonenumber: '', address: '', postal_code: ''};
+      }
+      fullName = JSON.parse(user.full_name);
+    } catch (error) {
+      Alert.alert('missing information', error.message);
+    }
+  };
+
+  fullNameParser(fullName);
 
   //console.log('user',user)
   const logOut = async () => {
@@ -68,9 +80,13 @@ export const Profile = ({navigation}) => {
           <ListItem.Title>{user.email}</ListItem.Title>
         </ListItem>
         <Card.Divider />
-        <Button size="sm" buttonStyle={{backgroundColor: 'black', borderRadius: 20}} onPress={logOut}>
+        <Button
+          size="sm"
+          buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+          onPress={logOut}
+        >
           Log out!
-          <Icon name="logout" color='white'></Icon>
+          <Icon name="logout" color="white"></Icon>
         </Button>
       </Card>
       <Card containerStyle={styles.cardProfile}>
@@ -88,7 +104,7 @@ export const Profile = ({navigation}) => {
           onPress={toHistory}
         >
           History
-          <Icon name="history" color='white'></Icon>
+          <Icon name="history" color="white"></Icon>
         </Button>
       </Card>
       <Card containerStyle={styles.cardProfile}>
