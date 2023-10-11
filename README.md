@@ -25,6 +25,6 @@ You can use the app without logging in and search for instruments announcements.
 ![Login.png](https://via.placeholder.com/468x300?text=Login.png)
 ![Profile.png](https://via.placeholder.com/468x300?text=Profile.png)
 ![SingleInstrument.png](https://via.placeholder.com/468x300?text=SingleInstrument.png)
-![../screenshot/ConfirmBuy.png](https://via.placeholder.com/468x300?text=ConfirmBuy.png)
+![../screenshot/ConfirmBuy.png](https://via.placeholder.com/468x300?text=../screenshot/ConfirmBuy.png)
 ![History.png](https://via.placeholder.com/468x300?text=History.png)
 
