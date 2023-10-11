@@ -65,6 +65,7 @@ const styles = StyleSheet.create({
     paddingTop: Platform.OS === 'android' ? 30 : 0,
     backgroundColor: 'rgb(0,0,0)',
     justifyContent: 'top',
+    marginBottom: 60,
   },
   contentContainer: {
     backgroundColor: 'rgb(0,0,0)',
