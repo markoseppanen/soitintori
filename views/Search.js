@@ -10,18 +10,20 @@ const Search = ({navigation}) => {
     navigation.navigate('Categories');
   };
   return (
-    <SafeAreaView style={styles.containerCategories}>
-      <View style={styles.pageTitleContainer}>
-        <View style={styles.pageTitleView}>
-          <Text style={styles.pageTitle}>Soitintori</Text>
+    <SafeAreaView style={styles.containerSearch}>
+      <View style={styles.searchContentContainer}>
+        <View style={styles.pageTitleContainer}>
+          <View style={styles.pageTitleView}>
+            <Text style={styles.pageTitle}>Soitintori</Text>
+          </View>
+          <View style={styles.searchIconView}>
+            <TouchableOpacity onPress={handleBackPress}>
+              <Icon name="arrow-back" size={40} color="white" />
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.searchIconView}>
-          <TouchableOpacity onPress={handleBackPress}>
-            <Icon name="arrow-back" size={40} color="white" />
-          </TouchableOpacity>
-        </View>
+        <SearchList navigation={navigation} />
       </View>
-      <SearchList navigation={navigation} />
     </SafeAreaView>
   );
 };

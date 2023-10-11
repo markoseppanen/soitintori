@@ -76,7 +76,18 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgb(0,0,0)',
     justifyContent: 'top',
-    marginBottom: 150,
+    marginBottom: 60,
+  },
+  containerSearch: {
+    flex: 1,
+    paddingTop: Platform.OS === 'android' ? 30 : 0,
+    backgroundColor: 'rgb(0,0,0)',
+  },
+  searchContentContainer: {
+    flex: 1,
+    backgroundColor: 'rgb(0,0,0)',
+    justifyContent: 'top',
+    marginBottom: 20,
   },
   flatlistContainer: {
     alignItems: 'center',
