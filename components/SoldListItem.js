@@ -44,7 +44,7 @@ const SoldListItem = ({singleSoldItem, salesData}) => {
       <TouchableOpacity onPress={toggleImageModal}>
         <Image
           source={{uri: mediaUrl + singleSoldItem.thumbnails.w160}}
-          style={{width: 80, height: 80, borderRadius: 8}}
+          style={{width: 80, height: 80, borderRadius: 6}}
         />
       </TouchableOpacity>
       <ImageModal

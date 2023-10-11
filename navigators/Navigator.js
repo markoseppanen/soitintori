@@ -55,6 +55,8 @@ const TabScreen = () => {
           component={StackScreen2}
           options={{
             tabBarIcon: ({color}) => <Icon name="add" color={color} />,
+            headerStyle: {backgroundColor: 'rgb(0, 0, 0)'},
+            headerTitleStyle: {color: 'rgb(255, 255, 255)'},
           }}
         />
       ) : null}
@@ -64,6 +66,8 @@ const TabScreen = () => {
           component={StackScreen3}
           options={{
             tabBarIcon: ({color}) => <Icon name="person" color={color} />,
+            headerStyle: {backgroundColor: 'rgb(0, 0, 0)'},
+            headerTitleStyle: {color: 'rgb(255, 255, 255)'},
           }}
         />
       ) : (
@@ -71,8 +75,9 @@ const TabScreen = () => {
           name="Login"
           component={Login}
           options={{
-            headerShown: false,
             tabBarIcon: ({color}) => <Icon name="person" color={color} />,
+            headerStyle: {backgroundColor: 'rgb(0, 0, 0)'},
+            headerTitleStyle: {color: 'rgb(255, 255, 255)'},
           }}
         />
       )}
@@ -98,7 +103,6 @@ const StackScreen = () => {
         component={Instruments}
         options={{
           title: '',
-          headerBackTitle: 'Back',
           headerStyle: {
             backgroundColor: 'rgb(0, 0, 0)',
           },
@@ -110,7 +114,6 @@ const StackScreen = () => {
         component={SingleInstrument}
         options={{
           title: '',
-          headerBackTitle: 'Back',
           headerStyle: {
             backgroundColor: 'rgb(0, 0, 0)',
           },
@@ -121,8 +124,7 @@ const StackScreen = () => {
         name="Edit Listing"
         component={EditListing}
         options={{
-          title: 'Edit announcement',
-          headerBackTitle: 'Back',
+          title: '',
           headerStyle: {
             backgroundColor: 'rgb(0, 0, 0)',
           },
@@ -150,10 +152,12 @@ const StackScreen2 = () => {
         name="AddListing"
         component={AddListing}
         options={{
-          headerShown: false,
+          title: '',
+          headerBackTitle: 'Back',
           headerStyle: {
             backgroundColor: 'rgb(0, 0, 0)',
           },
+          headerTintColor: 'rgb(255, 255, 255)',
         }}
       />
     </Stack.Navigator>
@@ -166,7 +170,14 @@ const StackScreen3 = () => {
       <Stack.Screen
         name="MyProfile"
         component={Profile}
-        options={{headerShown: false}}
+        options={{
+          title: '',
+          headerBackTitle: 'Back',
+          headerStyle: {
+            backgroundColor: 'rgb(0, 0, 0)',
+          },
+          headerTintColor: 'rgb(255, 255, 255)',
+        }}
       />
       <Stack.Screen
         name="Personal History"
@@ -184,7 +195,6 @@ const StackScreen3 = () => {
         name="Current Listing"
         component={MyListing}
         options={{
-          headerShown: false,
           title: '',
           headerBackTitle: 'Back',
           headerStyle: {

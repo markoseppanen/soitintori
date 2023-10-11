@@ -116,15 +116,13 @@ export const AddListing = ({navigation}) => {
 
   return (
     <ScrollView style={styles.containerAddListing}>
-      <View style={styles.pageTitleContainer}>
-        <View style={styles.pageTitleView}>
-          <Text style={styles.pageTitle}>Add Listing</Text>
-        </View>
-      </View>
       <Card>
         <Card.Image
           source={{uri: image}}
-          style={styles.uploadImage}
+          style={[
+            styles.uploadImage,
+            {borderWidth: 1, borderColor: 'rgb(0, 0, 0)'},
+          ]}
           onPress={pickImage}
         />
         <Controller
@@ -228,18 +226,18 @@ export const AddListing = ({navigation}) => {
         />
         <Button
           title="Choose Media"
-          buttonStyle={{backgroundColor: 'red', borderRadius: 20}}
+          buttonStyle={{backgroundColor: 'red', borderRadius: 4}}
           onPress={pickImage}
         />
         <Button
           title="Reset"
-          buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+          buttonStyle={{backgroundColor: 'black', borderRadius: 4}}
           color={'error'}
           onPress={resetForm}
         />
         <Button
           loading={loading}
-          buttonStyle={{backgroundColor: 'red', borderRadius: 20}}
+          buttonStyle={{backgroundColor: 'red', borderRadius: 4}}
           disabled={
             image == placeholderImage || errors.description || errors.title
           }

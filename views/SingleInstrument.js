@@ -123,7 +123,7 @@ export const SingleInstrument = ({route, navigation}) => {
                     width: 220,
                     height: 180,
                     borderWidth: 1,
-                    borderRadius: 10,
+                    borderRadius: 8,
                     alignContent: 'stretch',
                   }}
                 />
