@@ -80,26 +80,24 @@ const SoldList = ({navigation}) => {
   }
 
   return (
-    <ScrollView>
-      <View>
-        <View style={styles.pageTitleContainer}>
-          <View style={styles.pageSubTitleView}>
-            <Text style={styles.pageTitle}>Sold History</Text>
-          </View>
+    <View>
+      <View style={styles.pageTitleContainer}>
+        <View style={styles.pageSubTitleView}>
+          <Text style={styles.pageTitle}>Sold History</Text>
         </View>
-        <FlatList
-          data={combinedData}
-          numColumns={1}
-          renderItem={({item}) => (
-            <SoldListItem
-              navigation={navigation}
-              singleSoldItem={item.soldItem}
-              salesData={item.associatedComment}
-            />
-          )}
-        />
       </View>
-    </ScrollView>
+      <FlatList
+        data={combinedData}
+        numColumns={1}
+        renderItem={({item}) => (
+          <SoldListItem
+            navigation={navigation}
+            singleSoldItem={item.soldItem}
+            salesData={item.associatedComment}
+          />
+        )}
+      />
+    </View>
   );
 };
 

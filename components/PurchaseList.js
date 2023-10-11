@@ -81,26 +81,24 @@ const PurchaseList = ({navigation}) => {
   }
 
   return (
-    <ScrollView>
-      <View>
-        <View style={styles.pageTitleContainer}>
-          <View style={styles.pageSubTitleView}>
-            <Text style={styles.pageTitle}>Purchase History</Text>
-          </View>
+    <View>
+      <View style={styles.pageTitleContainer}>
+        <View style={styles.pageSubTitleView}>
+          <Text style={styles.pageTitle}>Purchase History</Text>
         </View>
-        <FlatList
-          data={combinedData}
-          numColumns={1}
-          renderItem={({item}) => (
-            <PurchaseListItem
-              navigation={navigation}
-              singlePurchasedItem={item.purchasedItem}
-              purchaseData={item.associatedComment}
-            />
-          )}
-        />
       </View>
-    </ScrollView>
+      <FlatList
+        data={combinedData}
+        numColumns={1}
+        renderItem={({item}) => (
+          <PurchaseListItem
+            navigation={navigation}
+            singlePurchasedItem={item.purchasedItem}
+            purchaseData={item.associatedComment}
+          />
+        )}
+      />
+    </View>
   );
 };
 
