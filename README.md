@@ -21,10 +21,9 @@ You can use the app without logging in and search for instruments announcements.
 
 # Screenshots
 ![App Screenshot]('..\..\..\..\..\..\soitintori\screenshots\Categories.png')
-![../screenshots/InstrumentList.png]
-![../screenshots/Login.png]
-![../screenshots/Profile.png]
-![../screenshots/SingleInstrument.png]
-![../screenshots/ConfirmBuy.png]
-![../screenshots/History.png]
-
+![InstrumentList.png]('../screenshots/InstrumentList.png')
+![App Screenshot]('../screenshots/Login.png')
+![App Screenshot]('../screenshots/Profile.png')
+![App Screenshot]('../screenshots/SingleInstrument.png')
+![App Screenshot]('../screenshots/ConfirmBuy.png')
+![App Screenshot]('../screenshots/History.png')
