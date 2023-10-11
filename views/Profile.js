@@ -10,19 +10,15 @@ import styles from '../styles/Styles';
 export const Profile = ({navigation}) => {
   const {setIsLoggedIn, user} = useContext(MainContext);
 
-  let fullName = user.full_name;
-  const fullNameParser = () => {
-    try {
-      if (fullName === undefined) {
-        fullName = {full_name: '', phonenumber: '', address: '', postal_code: ''};
-      }
-      fullName = JSON.parse(user.full_name);
-    } catch (error) {
-      Alert.alert('missing information', error.message);
-    }
-  };
-
-  fullNameParser(fullName);
+  const fullName =
+    user && user.full_name
+      ? JSON.parse(user.full_name)
+      : {
+          full_name: '',
+          phonenumber: '',
+          address: '',
+          postal_code: '',
+        };
 
   //console.log('user',user)
   const logOut = async () => {
@@ -81,8 +77,7 @@ export const Profile = ({navigation}) => {
         </ListItem>
         <Card.Divider />
         <Button
-          size="sm"
-          buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+          buttonStyle={{backgroundColor: 'black', borderRadius: 6}}
           onPress={logOut}
         >
           Log out!
@@ -91,16 +86,14 @@ export const Profile = ({navigation}) => {
       </Card>
       <Card containerStyle={styles.cardProfile}>
         <Button
-          size="sm"
-          buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+          buttonStyle={{backgroundColor: 'black', borderRadius: 6}}
           onPress={myListing}
         >
           Current Listing
         </Button>
         <Text></Text>
         <Button
-          size="sm"
-          buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+          buttonStyle={{backgroundColor: 'black', borderRadius: 6}}
           onPress={toHistory}
         >
           History

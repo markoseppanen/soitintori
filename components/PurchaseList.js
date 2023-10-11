@@ -84,7 +84,7 @@ const PurchaseList = ({navigation}) => {
     <View>
       <View style={styles.pageTitleContainer}>
         <View style={styles.pageSubTitleView}>
-          <Text style={styles.pageTitle}>Purchase History</Text>
+          <Text style={styles.pageSubTitle}>Purchase History</Text>
         </View>
       </View>
       <FlatList

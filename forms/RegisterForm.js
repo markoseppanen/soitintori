@@ -222,7 +222,7 @@ const RegisterForm = ({setToggleRegister}) => {
       />
 
       <Button
-        buttonStyle={{backgroundColor: 'black', borderRadius: 20}}
+        buttonStyle={{backgroundColor: 'black', borderRadius: 6}}
         title="Submit"
         onPress={handleSubmit(register)}
       />

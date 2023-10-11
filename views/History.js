@@ -12,7 +12,9 @@ export const History = ({navigation}) => {
   return (
     <SafeAreaView style={styles.containerCategories}>
       <View style={styles.pageTitleContainer}>
-        <Text style={styles.pageTitle}>Soitintori</Text>
+        <View style={styles.pageSubTitleView}>
+          <Text style={styles.pageSubTitle}>User history</Text>
+        </View>
       </View>
       <View style={styles.tabsContainer}>
         <TouchableHighlight

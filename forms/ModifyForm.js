@@ -89,7 +89,7 @@ const ModifyForm = ({myInstrument, visible, toggleEditFormModal}) => {
               loadingProps={{size: 'small', color: 'rgb(255, 0, 0'}}
               buttonStyle={{
                 backgroundColor: 'rgba(255, 255, 255, 1)',
-                borderRadius: 4,
+                borderRadius: 6,
               }}
               titleStyle={{
                 fontWeight: 'bold',
@@ -222,6 +222,7 @@ const ModifyForm = ({myInstrument, visible, toggleEditFormModal}) => {
                 justifyContent: 'center',
                 marginLeft: 20,
                 marginRight: 0,
+                borderRadius: 6,
               }}
               onPress={handleSubmit(modifyListing)}
             />
@@ -234,6 +235,7 @@ const ModifyForm = ({myInstrument, visible, toggleEditFormModal}) => {
                 justifyContent: 'center',
                 marginLeft: 0,
                 marginRight: 0,
+                borderRadius: 6,
               }}
               onPress={() => {
                 reset();
@@ -248,6 +250,7 @@ const ModifyForm = ({myInstrument, visible, toggleEditFormModal}) => {
                 justifyContent: 'center',
                 marginLeft: 0,
                 marginRight: 20,
+                borderRadius: 6,
               }}
               onPress={() => {
                 toggleEditFormModal();

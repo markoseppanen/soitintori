@@ -13,7 +13,7 @@ const InstrumentList = ({navigation, categoryTitle}) => {
   const {mediaArray} = useMedia(update);
   const {loadComments, commentsArray} = useComment();
   const [commentsFetched, setCommentsFetched] = useState(false);
-
+  console.log('categoryTitle', categoryTitle);
   useEffect(() => {
     // console.log('checking the categoryTitle', categoryTitle);
   }, [categoryTitle]);
@@ -68,22 +68,36 @@ const InstrumentList = ({navigation, categoryTitle}) => {
 
   if (filteredInstrumentArray.length === 0) {
     return (
-      <View style={styles.loadingContainer}>
-        <Text style={styles.loadingText}>Loading instruments...</Text>
-        <Text style={styles.loadingText}></Text>
-        <Text style={styles.loadingText}>Nothing to show yet.</Text>
+      <View style={styles.containerinstrumentList}>
+        <View style={styles.instrumentTitleContainer}>
+          <View style={styles.instrumentListTitleView}>
+            <Text style={styles.instrumentPageTitle}>{categoryTitle}</Text>
+          </View>
+        </View>
+        <View style={styles.loadingContainer}>
+          <Text style={styles.loadingText}>Loading instruments...</Text>
+          <Text style={styles.loadingText}></Text>
+          <Text style={styles.loadingText}>Nothing to show yet.</Text>
+        </View>
       </View>
     );
   }
 
   return (
-    <FlatList
-      data={filteredInstrumentArray}
-      numColumns={2}
-      renderItem={({item}) => (
-        <InstrumentListItem navigation={navigation} singleInstrument={item} />
-      )}
-    />
+    <View style={styles.containerinstrumentList}>
+      <View style={styles.instrumentTitleContainer}>
+        <View style={styles.instrumentListTitleView}>
+          <Text style={styles.instrumentPageTitle}>{categoryTitle}</Text>
+        </View>
+      </View>
+      <FlatList
+        data={filteredInstrumentArray}
+        numColumns={2}
+        renderItem={({item}) => (
+          <InstrumentListItem navigation={navigation} singleInstrument={item} />
+        )}
+      />
+    </View>
   );
 };
 

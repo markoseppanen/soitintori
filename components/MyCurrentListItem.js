@@ -55,7 +55,7 @@ const MyCurrentListItem = ({navigation, singleCurrentItem}) => {
       <TouchableOpacity onPress={toggleImageModal}>
         <Image
           source={{uri: mediaUrl + singleCurrentItem.thumbnails.w160}}
-          style={{width: 80, height: 80, borderRadius: 8}}
+          style={{width: 80, height: 80, borderRadius: 6}}
         />
       </TouchableOpacity>
       <ImageModal

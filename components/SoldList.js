@@ -83,7 +83,7 @@ const SoldList = ({navigation}) => {
     <View>
       <View style={styles.pageTitleContainer}>
         <View style={styles.pageSubTitleView}>
-          <Text style={styles.pageTitle}>Sold History</Text>
+          <Text style={styles.pageSubTitle}>Sold History</Text>
         </View>
       </View>
       <FlatList

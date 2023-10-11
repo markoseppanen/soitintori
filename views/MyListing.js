@@ -9,8 +9,8 @@ export const MyListing = ({navigation}) => {
   return (
     <SafeAreaView style={styles.containerCategories}>
       <View style={styles.pageTitleContainer}>
-        <View style={styles.pageTitleView}>
-          <Text style={styles.pageTitle}>My current listing</Text>
+        <View style={styles.pageSubTitleView}>
+          <Text style={styles.pageSubTitle}>User's current announcements</Text>
         </View>
       </View>
       <MyCurrentList navigation={navigation} />

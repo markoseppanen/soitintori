@@ -21,7 +21,9 @@ export const Categories = ({navigation}) => {
           </TouchableOpacity>
         </View>
       </View>
-      <CategoryList navigation={navigation} />
+      <View style={styles.contentContainer}>
+        <CategoryList navigation={navigation} />
+      </View>
     </SafeAreaView>
   );
 };

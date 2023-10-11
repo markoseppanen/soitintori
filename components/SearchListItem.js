@@ -14,7 +14,7 @@ const SearchListItem = ({navigation, singleInstrument}) => {
     >
       <Image
         source={{uri: mediaUrl + singleInstrument.thumbnails.w160}}
-        style={{width: 150, height: 150, borderRadius: 10}}
+        style={{width: 150, height: 150, borderRadius: 6}}
       />
     </RNEListItem>
   );

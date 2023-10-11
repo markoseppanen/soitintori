@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
   },
   cardProfile: {
     backgroundColor: 'rgb(255,0,0)',
+    borderRadius: 6,
   },
   // Card titles
   cardTitle: {
@@ -25,11 +26,13 @@ const styles = StyleSheet.create({
   loginCard: {
     backgroundColor: 'rgb(255,0,0)',
     color: 'rgb(0,0,0)',
+    borderRadius: 6,
   },
   // AddListing.js
   containerAddListing: {
     flex: 1,
     backgroundColor: 'rgb(0,0,0)',
+    padding: 10,
   },
 
   // Instruments.js
@@ -37,10 +40,10 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: Platform.OS === 'android' ? 30 : 0,
     backgroundColor: 'rgb(0,0,0)',
-    alignItems: 'center',
+    // alignItems: 'center',
     justifyContent: 'center',
   },
-  //MyCurrentListItem
+  // MyCurrentListItem
   myCurrentListItemRNE: {
     backgroundColor: 'rgb(0, 0, 0)',
   },
@@ -63,6 +66,11 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(0,0,0)',
     justifyContent: 'top',
   },
+  contentContainer: {
+    backgroundColor: 'rgb(0,0,0)',
+    justifyContent: 'top',
+    alignItems: 'center',
+  },
   pageTitleContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -72,13 +80,39 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(255,0,0)',
     padding: 10,
     borderRadius: 10,
-    marginLeft: 10,
+    marginLeft: 20,
     alignSelf: 'flex-start',
+  },
+  containerinstrumentList: {
+    flex: 1,
+    paddingHorizontal: 16,
+    paddingTop: 16,
+    // Add any other styles you need
+  },
+  instrumentTitleContainer: {
+    alignItems: 'left',
+    justifyContent: 'top',
+  },
+  instrumentListTitleView: {
+    backgroundColor: 'rgb(255,0,0)',
+    padding: 10,
+    borderRadius: 10,
+    marginLeft: 20,
+    alignSelf: 'flex-start',
+  },
+  instrumentPageTitle: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: 'white',
+    alignSelf: 'flex-start',
+    textShadowColor: 'rgba(0, 0, 0, 0.9)',
+    textShadowOffset: {width: 3, height: 3},
+    textShadowRadius: 3,
   },
   pageSubTitleView: {
     padding: 10,
-    borderRadius: 10,
-    marginLeft: 10,
+    borderRadius: 6,
+    marginLeft: 20,
     alignSelf: 'flex-start',
   },
   pageTitle: {
@@ -90,9 +124,18 @@ const styles = StyleSheet.create({
     textShadowOffset: {width: 3, height: 3},
     textShadowRadius: 3,
   },
+  pageSubTitle: {
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: 'white',
+    alignSelf: 'flex-start',
+    textShadowColor: 'rgba(0, 0, 0, 0.9)',
+    textShadowOffset: {width: 3, height: 3},
+    textShadowRadius: 3,
+  },
   searchIconView: {
     padding: 5,
-    borderRadius: 10,
+    borderRadius: 6,
     alignItems: 'flex-end',
     justifyContent: 'center',
     marginRight: 30,
@@ -144,7 +187,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingLeft: 10,
     paddingRight: 10,
-    borderRadius: 8,
+    borderRadius: 6,
     marginTop: 10,
     marginBottom: 20,
   },
@@ -162,18 +205,18 @@ const styles = StyleSheet.create({
   imageCategoryListItem: {
     width: 300,
     height: 100,
-    borderRadius: 8,
+    borderRadius: 6,
   },
   overlayCategoryListItem: {
     position: 'absolute',
     top: 0,
     left: 0,
     right: 0,
-    bottom: 0,
+    bottom: 5,
     justifyContent: 'flex-end',
     alignItems: 'left',
     backgroundColor: 'rgba(0, 0, 0, 0.1)',
-    borderRadius: 8,
+    borderRadius: 6,
   },
   titleCategoryListItem: {
     alignSelf: 'center',
@@ -185,7 +228,7 @@ const styles = StyleSheet.create({
     // shadow
     textShadowColor: 'rgba(255, 255, 255, 0.9)',
     textShadowOffset: {width: 2, height: 2},
-    textShadowRadius: 2,
+    textShadowRadius: 3,
   },
   // SingleInstrument.js
   singleInstrumentContainer: {
@@ -196,7 +239,7 @@ const styles = StyleSheet.create({
   singleInstrumentCardTop: {
     backgroundColor: 'rgb(0,0,0)',
     padding: 5,
-    borderRadius: 20,
+    borderRadius: 6,
     margin: 0,
     alignItems: 'center',
     justifyContent: 'center',
@@ -205,7 +248,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'rgb(0,0,0)',
     borderWidth: 1,
     padding: 20,
-    borderRadius: 20,
+    borderRadius: 6,
     marginTop: 10,
     width: 'auto',
   },
@@ -227,11 +270,16 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   },
   // Modify
+  editListingContainer: {
+    backgroundColor: 'rgb(0,0,0)',
+    flex: 1,
+  },
   modifyImage: {
     width: '100%',
     height: undefined,
     aspectRatio: 1,
     marginBottom: 15,
+    borderRadius: 6,
     resizeMode: 'cover',
   },
   // Modals
@@ -242,7 +290,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   modalImageContainer: {
-    borderRadius: 10,
+    borderRadius: 6,
   },
   modalImage: {
     width: '80%',
@@ -263,7 +311,7 @@ const styles = StyleSheet.create({
   buyModalContent: {
     backgroundColor: 'rgb(0, 0, 0)',
     padding: 20,
-    borderRadius: 10,
+    borderRadius: 6,
     borderWidth: 0.5,
     borderColor: 'rgb(255, 255, 255)',
     alignItems: 'center',
@@ -272,7 +320,7 @@ const styles = StyleSheet.create({
   buyModalTitle: {
     width: 200,
     backgroundColor: 'rgb(0, 0, 0)',
-    borderRadius: 4,
+    borderRadius: 6,
     borderWidth: 1,
     color: 'rgb(255, 255, 255)',
     padding: 4,
@@ -287,7 +335,7 @@ const styles = StyleSheet.create({
   buyModalButton: {
     width: 100,
     backgroundColor: 'rgb(255, 0, 0)',
-    borderRadius: 4,
+    borderRadius: 6,
     borderWidth: 1,
     color: 'rgb(255, 255, 255)',
     padding: 4,
@@ -302,7 +350,7 @@ const styles = StyleSheet.create({
   successModalContent: {
     backgroundColor: 'rgb(0, 0, 0)',
     padding: 20,
-    borderRadius: 10,
+    borderRadius: 6,
     borderWidth: 0.5,
     borderColor: 'rgb(255, 255, 255)',
     alignItems: 'center',
@@ -311,7 +359,7 @@ const styles = StyleSheet.create({
   successModalTitleContainer: {
     width: 200,
     backgroundColor: 'rgb(0, 0, 0)',
-    borderRadius: 4,
+    borderRadius: 6,
     borderWidth: 1,
     color: 'rgb(255, 255, 255)',
     padding: 4,
@@ -331,7 +379,7 @@ const styles = StyleSheet.create({
   successModalButton: {
     width: 100,
     backgroundColor: 'rgb(255, 0, 0)',
-    borderRadius: 4,
+    borderRadius: 6,
     borderWidth: 1,
     color: 'rgb(255, 255, 255)',
     padding: 4,
@@ -358,7 +406,7 @@ const styles = StyleSheet.create({
   receiptModalContent: {
     backgroundColor: 'rgb(0, 0, 0)',
     padding: 20,
-    borderRadius: 10,
+    borderRadius: 6,
     borderWidth: 0.5,
     borderColor: 'rgb(255, 255, 255)',
     alignItems: 'center',
@@ -367,7 +415,7 @@ const styles = StyleSheet.create({
   receiptModalTitleContainer: {
     width: 200,
     backgroundColor: 'rgb(0, 0, 0)',
-    borderRadius: 4,
+    borderRadius: 6,
     borderWidth: 1,
     color: 'rgb(255, 255, 255)',
     padding: 4,
@@ -398,7 +446,7 @@ const styles = StyleSheet.create({
   receiptModalButton: {
     width: 100,
     backgroundColor: 'rgb(255, 0, 0)',
-    borderRadius: 4,
+    borderRadius: 6,
     borderWidth: 1,
     color: 'rgb(255, 255, 255)',
     padding: 4,
@@ -412,7 +460,7 @@ const styles = StyleSheet.create({
   receiptModalInfoContainer: {
     backgroundColor: 'rgb(0, 0, 0)',
     padding: 20,
-    borderRadius: 10,
+    borderRadius: 6,
     borderWidth: 0.5,
     borderColor: 'rgb(255, 255, 255)',
     alignItems: 'center',
@@ -427,6 +475,8 @@ const styles = StyleSheet.create({
   // History.js tabs
   tabsContainer: {
     flexDirection: 'row',
+    marginLeft: 10,
+    marginRight: 10,
     justifyContent: 'space-between',
     alignItems: 'center',
     backgroundColor: 'rgb(0, 0, 0)',

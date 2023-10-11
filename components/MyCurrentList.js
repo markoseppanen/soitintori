@@ -1,4 +1,4 @@
-import {FlatList} from 'react-native';
+import {FlatList, View} from 'react-native';
 import {useMedia, useComment} from '../hooks/ApiHooks';
 import MyCurrentListItem from './MyCurrentListItem';
 import PropTypes from 'prop-types';
@@ -6,6 +6,7 @@ import {Text} from '@rneui/themed';
 import {useContext, useEffect, useState} from 'react';
 import {MainContext} from '../contexts/MainContext';
 import {createInstrumentArray} from '../utils/functions.js';
+import styles from '../styles/Styles';
 
 const MyCurrentList = ({navigation}) => {
   const {update} = useContext(MainContext);
@@ -58,7 +59,13 @@ const MyCurrentList = ({navigation}) => {
   // console.log('own items', filteredInstrumentArray);
 
   if (filteredInstrumentArray.length === 0) {
-    return <Text>Nothing to show yet</Text>;
+    return (
+      <View style={styles.loadingContainer}>
+        <Text style={styles.loadingText}>Loading...</Text>
+        <Text style={styles.loadingText}></Text>
+        <Text style={styles.loadingText}>Nothing to show yet.</Text>
+      </View>
+    );
   }
 
   return (
