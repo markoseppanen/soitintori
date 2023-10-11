@@ -90,13 +90,18 @@ const InstrumentList = ({navigation, categoryTitle}) => {
           <Text style={styles.instrumentPageTitle}>{categoryTitle}</Text>
         </View>
       </View>
-      <FlatList
-        data={filteredInstrumentArray}
-        numColumns={2}
-        renderItem={({item}) => (
-          <InstrumentListItem navigation={navigation} singleInstrument={item} />
-        )}
-      />
+      <View style={styles.flatlistContainer}>
+        <FlatList
+          data={filteredInstrumentArray}
+          numColumns={2}
+          renderItem={({item}) => (
+            <InstrumentListItem
+              navigation={navigation}
+              singleInstrument={item}
+            />
+          )}
+        />
+      </View>
     </View>
   );
 };

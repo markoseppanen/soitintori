@@ -10,43 +10,48 @@ export const History = ({navigation}) => {
   const [changeList, setChangeList] = useState(false);
 
   return (
-    <SafeAreaView style={styles.containerCategories}>
-      <View style={styles.pageTitleContainer}>
-        <View style={styles.pageSubTitleView}>
-          <Text style={styles.pageSubTitle}>User history</Text>
+    <SafeAreaView style={styles.containerHistory}>
+      <View style={styles.historyContentContainer}>
+        <View style={styles.pageTitleContainer}>
+          <View style={styles.pageSubTitleView}>
+            <Text style={styles.pageSubTitle}>User history</Text>
+          </View>
         </View>
-      </View>
-      <View style={styles.tabsContainer}>
-        <TouchableHighlight
-          onPress={() => setChangeList(false)}
-          style={[styles.tabButton, !changeList && styles.selectedTab]}
-        >
-          <Text
-            style={[
-              styles.tabButtonText,
-              !changeList && styles.selectedTabText,
-            ]}
+        <View style={styles.tabsContainer}>
+          <TouchableHighlight
+            onPress={() => setChangeList(false)}
+            style={[styles.tabButton, !changeList && styles.selectedTab]}
           >
-            Sold List
-          </Text>
-        </TouchableHighlight>
-        <TouchableHighlight
-          onPress={() => setChangeList(true)}
-          style={[styles.tabButton, changeList && styles.selectedTab]}
-        >
-          <Text
-            style={[styles.tabButtonText, changeList && styles.selectedTabText]}
+            <Text
+              style={[
+                styles.tabButtonText,
+                !changeList && styles.selectedTabText,
+              ]}
+            >
+              Sold List
+            </Text>
+          </TouchableHighlight>
+          <TouchableHighlight
+            onPress={() => setChangeList(true)}
+            style={[styles.tabButton, changeList && styles.selectedTab]}
           >
-            Purchase List
-          </Text>
-        </TouchableHighlight>
-      </View>
-      <View style={{flex: 1}}>
-        {changeList === false ? (
-          <SoldList navigation={navigation} />
-        ) : (
-          <PurchaseList navigation={navigation} />
-        )}
+            <Text
+              style={[
+                styles.tabButtonText,
+                changeList && styles.selectedTabText,
+              ]}
+            >
+              Purchase List
+            </Text>
+          </TouchableHighlight>
+        </View>
+        <View style={{flex: 1}}>
+          {changeList === false ? (
+            <SoldList navigation={navigation} />
+          ) : (
+            <PurchaseList navigation={navigation} />
+          )}
+        </View>
       </View>
     </SafeAreaView>
   );

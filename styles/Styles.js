@@ -67,6 +67,21 @@ const styles = StyleSheet.create({
     justifyContent: 'top',
     marginBottom: 60,
   },
+  containerHistory: {
+    flex: 1,
+    paddingTop: Platform.OS === 'android' ? 30 : 0,
+    backgroundColor: 'rgb(0,0,0)',
+  },
+  historyContentContainer: {
+    flex: 1,
+    backgroundColor: 'rgb(0,0,0)',
+    justifyContent: 'top',
+    marginBottom: 150,
+  },
+  flatlistContainer: {
+    alignItems: 'center',
+    backgroundColor: 'rgb(0,0,0)',
+  },
   contentContainer: {
     backgroundColor: 'rgb(0,0,0)',
     justifyContent: 'top',
@@ -88,7 +103,7 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingHorizontal: 16,
     paddingTop: 16,
-    // Add any other styles you need
+    marginBottom: 50,
   },
   instrumentTitleContainer: {
     alignItems: 'left',
