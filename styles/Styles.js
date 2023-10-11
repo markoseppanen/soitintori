@@ -328,10 +328,16 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   editModal: {
-    width: '95%',
+    backgroundColor: 'rgb(255, 0, 0)',
+    width: '90%',
     height: '75%',
     alignSelf: 'center',
-    marginTop: '12%',
+    marginTop: '15%',
+  },
+  modifyFormButtonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
 });
 
