@@ -13,7 +13,7 @@ const InstrumentList = ({navigation, categoryTitle}) => {
   const {mediaArray} = useMedia(update);
   const {loadComments, commentsArray} = useComment();
   const [commentsFetched, setCommentsFetched] = useState(false);
-  console.log('categoryTitle', categoryTitle);
+  // console.log('categoryTitle', categoryTitle);
   useEffect(() => {
     // console.log('checking the categoryTitle', categoryTitle);
   }, [categoryTitle]);
@@ -75,8 +75,6 @@ const InstrumentList = ({navigation, categoryTitle}) => {
           </View>
         </View>
         <View style={styles.loadingContainer}>
-          <Text style={styles.loadingText}>Loading instruments...</Text>
-          <Text style={styles.loadingText}></Text>
           <Text style={styles.loadingText}>Nothing to show yet.</Text>
         </View>
       </View>
