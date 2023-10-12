@@ -10,19 +10,21 @@ export const Categories = ({navigation}) => {
     navigation.navigate('Search');
   };
   return (
-    <SafeAreaView style={styles.containerCategories}>
-      <View style={styles.pageTitleContainer}>
-        <View style={styles.pageTitleView}>
-          <Text style={styles.pageTitle}>Soitintori</Text>
+    <SafeAreaView style={styles.containerSearch}>
+      <View style={styles.searchContentContainer}>
+        <View style={styles.pageTitleContainer}>
+          <View style={styles.pageTitleView}>
+            <Text style={styles.pageTitle}>Soitintori</Text>
+          </View>
+          <View style={styles.searchIconView}>
+            <TouchableOpacity onPress={handleSearchPress}>
+              <Icon name="search" size={40} color="white" />
+            </TouchableOpacity>
+          </View>
         </View>
-        <View style={styles.searchIconView}>
-          <TouchableOpacity onPress={handleSearchPress}>
-            <Icon name="search" size={40} color="white" />
-          </TouchableOpacity>
+        <View style={styles.contentContainer}>
+          <CategoryList navigation={navigation} />
         </View>
-      </View>
-      <View style={styles.contentContainer}>
-        <CategoryList navigation={navigation} />
       </View>
     </SafeAreaView>
   );

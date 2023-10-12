@@ -10,15 +10,20 @@ import styles from '../styles/Styles';
 export const Profile = ({navigation}) => {
   const {setIsLoggedIn, user} = useContext(MainContext);
 
-  const fullName =
-    user && user.full_name
-      ? JSON.parse(user.full_name)
-      : {
-          full_name: '',
-          phonenumber: '',
-          address: '',
-          postal_code: '',
-        };
+  let fullName = {
+    full_name: '',
+    phonenumber: '',
+    address: '',
+    postal_code: '',
+  };
+
+  if (user && user.full_name) {
+    try {
+      fullName = JSON.parse(user.full_name);
+    } catch (error) {
+      console.log('', error);
+    }
+  }
 
   //console.log('user',user)
   const logOut = async () => {
