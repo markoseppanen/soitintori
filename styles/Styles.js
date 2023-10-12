@@ -99,6 +99,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   pageTitleContainer: {
+    backgroundColor: 'rgb(0, 0, 0)',
     flexDirection: 'row',
     justifyContent: 'space-between',
     marginBottom: 10,
@@ -111,6 +112,7 @@ const styles = StyleSheet.create({
     alignSelf: 'flex-start',
   },
   containerinstrumentList: {
+    backgroundColor: 'rgb(0, 0, 0)',
     flex: 1,
     paddingHorizontal: 16,
     paddingTop: 16,
@@ -168,27 +170,32 @@ const styles = StyleSheet.create({
     marginRight: 30,
   },
   loadingContainer: {
+    backgroundColor: 'rgb(0, 0, 0)',
     marginTop: 50,
     alignItems: 'center',
     justifyContent: 'center',
     margin: 50,
   },
   loadingText: {
+    backgroundColor: 'rgb(0, 0, 0)',
     color: 'rgb(255,255,255)',
     fontSize: 16,
   },
   // Search
   // SearchBar
   searchResultContainer: {
+    backgroundColor: 'rgb(0, 0, 0)',
     marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
   },
   noResultText: {
+    backgroundColor: 'rgb(0, 0, 0)',
     color: 'rgb(255, 255, 255)',
     fontSize: 20,
   },
   searchContainer: {
+    backgroundColor: 'rgb(0, 0, 0)',
     flexDirection: 'row',
     width: 'auto',
   },
@@ -226,10 +233,12 @@ const styles = StyleSheet.create({
   },
   // CategoriesListItem.js
   containerCategoryListItem: {
+    backgroundColor: 'rgb(0, 0, 0)',
     position: 'relative',
     margin: 0,
   },
   imageCategoryListItem: {
+    backgroundColor: 'rgb(0, 0, 0)',
     width: 300,
     height: 100,
     borderRadius: 6,

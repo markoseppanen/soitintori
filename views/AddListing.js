@@ -1,9 +1,9 @@
 import {Card, Input, Button, Text} from '@rneui/themed';
 import {Controller, useForm} from 'react-hook-form';
-import {Alert, ScrollView, View} from 'react-native';
+import {Alert, ScrollView, TouchableOpacity, Image} from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import * as ImagePicker from 'expo-image-picker';
-import {useContext, useState} from 'react';
+import {useContext, useState, useEffect} from 'react';
 import {appId, placeholderImage} from '../utils/app-config';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {useMedia, useTag} from '../hooks/ApiHooks';
@@ -19,6 +19,26 @@ export const AddListing = ({navigation}) => {
   const {postMedia, loading} = useMedia();
   const {mediaArray} = useMedia(update);
   const {postTag} = useTag();
+  const {user} = useContext(MainContext);
+
+  let sellerData = {
+    full_name: '',
+    phonenumber: '',
+    address: '',
+    postal_code: '',
+  };
+
+  if (user && user.full_name) {
+    try {
+      sellerData = JSON.parse(user.full_name);
+    } catch (error) {
+      console.log('', error);
+    }
+  }
+
+  useEffect(() => {
+    console.log('sellerData', sellerData);
+  });
   const {
     control,
     reset,
@@ -30,8 +50,11 @@ export const AddListing = ({navigation}) => {
       title: '',
       description: '',
       price: '',
-      address: '',
-      seller_phonenumber: '',
+      address:
+        sellerData.address && sellerData.postal_code
+          ? `${sellerData.address}, ${sellerData.postal_code}`
+          : '',
+      seller_phonenumber: `${sellerData.phonenumber}` || '',
     },
     mode: 'onBlur',
   });
@@ -105,7 +128,7 @@ export const AddListing = ({navigation}) => {
     const result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
       allowsEditing: true,
-      aspect: [4, 3],
+      aspect: [4, 7],
     });
 
     if (!result.canceled) {
@@ -117,14 +140,34 @@ export const AddListing = ({navigation}) => {
   return (
     <ScrollView style={styles.containerAddListing}>
       <Card>
-        <Card.Image
-          source={{uri: image}}
-          style={[
-            styles.uploadImage,
-            {borderWidth: 1, borderColor: 'rgb(0, 0, 0)'},
-          ]}
+        <TouchableOpacity
+          style={{
+            backgroundColor: 'rgb(0, 0, 0)',
+            borderWidth: 1,
+            borderColor: 'rgb(0, 0, 0)',
+            alignItems: 'center',
+            justifyContent: 'center',
+            height: 300,
+          }}
           onPress={pickImage}
-        />
+        >
+          {image ? (
+            <Image
+              source={{uri: image}}
+              style={{width: '100%', height: '100%'}}
+            />
+          ) : (
+            <Text
+              style={{
+                backgroundColor: 'rgb(0, 0, 0)',
+                color: 'rgb(255, 255, 255)',
+                fontSize: 20,
+              }}
+            >
+              Choose Image
+            </Text>
+          )}
+        </TouchableOpacity>
         <Controller
           control={control}
           rules={{
