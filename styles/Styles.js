@@ -64,8 +64,6 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: Platform.OS === 'android' ? 30 : 0,
     backgroundColor: 'rgb(0,0,0)',
-    justifyContent: 'top',
-    marginBottom: 60,
   },
   containerHistory: {
     flex: 1,
@@ -87,7 +85,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'rgb(0,0,0)',
     justifyContent: 'top',
-    marginBottom: 20,
+    marginBottom: 40,
   },
   flatlistContainer: {
     alignItems: 'center',
@@ -336,6 +334,12 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: 20,
     right: 20,
+    zIndex: 1,
+  },
+  closeButtonImageModal: {
+    position: 'absolute',
+    top: 50,
+    right: 40,
     zIndex: 1,
   },
   buyModalContainer: {

@@ -10,7 +10,7 @@ export const Categories = ({navigation}) => {
     navigation.navigate('Search');
   };
   return (
-    <SafeAreaView style={styles.containerSearch}>
+    <SafeAreaView style={styles.containerCategories}>
       <View style={styles.searchContentContainer}>
         <View style={styles.pageTitleContainer}>
           <View style={styles.pageTitleView}>

@@ -11,7 +11,7 @@ const ImageModal = ({visible, imageUrl, onClose}) => {
       onRequestClose={() => onClose()}
     >
       <View style={styles.modalContainer}>
-        <TouchableOpacity style={styles.closeButton} onPress={() => onClose()}>
+        <TouchableOpacity style={styles.closeButtonImageModal} onPress={() => onClose()}>
           <Icon name="close" size={30} color="white" />
         </TouchableOpacity>
         <Image
